@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings.SettingsActivity">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:background="@color/bgColor"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Settings"
+            android:textSize="23sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="30dp"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/r2"
+        android:layout_below="@+id/r1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background = "@color/black"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:padding="5dp"
+            android:id="@+id/userPoll"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/t1"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="User Poll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_below="@+id/t1"
+                        android:id="@+id/t2"
+                        android:textSize="12sp"
+                        android:layout_centerVertical="true"
+                        android:textColor="#9c9c9c"
+                        android:text="Help us improve QuiQle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:padding="5dp"
+            android:id="@+id/accountPrivacy"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/userPoll"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Account Privacy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="#9c9c9c"
+                        android:text="Help us improve QuiQle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/toggleButton_accountPrivacy_settingsActivity"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:padding="5dp"
+            android:id="@+id/about"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/accountPrivacy"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="About"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="#9c9c9c"
+                        android:text="Help us improve QuiQle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:padding="5dp"
+            android:id="@+id/help"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/about"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Help"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="#9c9c9c"
+                        android:text="Help us improve QuiQle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:padding="5dp"
+            android:id="@+id/support"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/help"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Support QuiQle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="#9c9c9c"
+                        android:text="Help us improve QuiQle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:padding="5dp"
+            android:id="@+id/verification"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/support"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Apply for verified Account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="#9c9c9c"
+                        android:text="Help us improve QuiQle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:text="Log Out"
+            android:layout_alignParentBottom="true"
+            app:iconGravity="end"
+            android:layout_above="@+id/view"
+            android:elevation="5dp"
+            android:textAlignment="viewStart"
+            app:icon="@drawable/ic_logout_new_black_24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <RelativeLayout
+            android:id="@+id/view"
+            android:background="@color/bgColor"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+
+            <TextView
+                android:id="@+id/quiqle"
+                android:text="A QuiQle Corp. Product"
+                android:textColor="@color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

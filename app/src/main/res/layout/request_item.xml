@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:padding="5dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage_request_item"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:layout_width="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:text="\@"
+            android:textStyle="bold"
+            android:id="@+id/t1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/userImage_request_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/username_request_item"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/t1"
+            android:textColor="@color/white"
+            android:text="username"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/username_request_item"
+            android:textColor="@color/white"
+            android:text=" wants to follow you."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/t2"
+            android:layout_below="@+id/t1"
+            android:layout_toEndOf="@+id/userImage_request_item"
+            android:textColor="#9c9c9c"
+            android:textSize="12sp"
+            android:text="Allowed user can see your photos,followers and following"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_below="@+id/r1"
+        android:padding="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnIgnore"
+            android:text="Ignore"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/bgColor"
+            />
+        <Button
+            android:id="@+id/btnAccept"
+            android:text="Accept"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_margin="5dp"
+            android:layout_height="50dp"
+            />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:backgroundTint="@color/black"
+    android:layout_marginBottom="2dp"
+    android:padding="5dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_publisher_comment_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:text="\@"
+            android:id="@+id/at"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/image_publisher_comment_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/username_publisher_comment_layout"
+            android:text="username"
+            android:textStyle="bold"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@+id/at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/image_verified_comment"
+            android:layout_toEndOf="@+id/username_publisher_comment_layout"
+            android:layout_width="20dp"
+            android:src="@drawable/ic_verified"
+            android:layout_height="20dp"/>
+
+        <TextView
+            android:id="@+id/comments_text_publisher_comment_layout"
+            android:text="comment"
+            android:layout_below="@+id/username_publisher_comment_layout"
+            android:layout_toEndOf="@+id/image_publisher_comment_layout"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:layout_toStartOf="@+id/more_comment"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/more_comment"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

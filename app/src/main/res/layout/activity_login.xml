@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bgColor"
+    android:layout_height="match_parent"
+    tools:context=".loginsignup.LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="QuiQle"
+        android:textSize="23sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        android:hint="Email"
+        app:boxBackgroundColor="@color/bgColor"
+        android:textColorHint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_marginTop="10dp"
+        android:hint="Password"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_width="match_parent"
+        app:boxBackgroundColor="@color/bgColor"
+        android:textColorHint="@color/white"
+        app:errorEnabled="true"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/white"
+        app:helperTextEnabled="true"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textPassword"
+            android:id="@+id/passeord"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:textSize="17sp"
+        android:text="Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Forgot Password?"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="or"
+        android:layout_marginTop="10dp"
+        android:textSize="23sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:textSize="17sp"
+        android:text="Sign Up"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+
+
+</LinearLayout>

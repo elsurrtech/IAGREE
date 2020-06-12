@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dcdcdc"
+    android:backgroundTint="@color/black"
+    tools:context=".ui.add.AddFragment">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:background="@color/bgColor"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:paddingTop="5dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_post_btn_add_fragment"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:text="    Add a Post"
+            android:layout_margin="20dp"
+            app:iconGravity="end"
+            android:elevation="5dp"
+            android:textAlignment="viewStart"
+            app:icon="@drawable/ic_add_a_photo_black_24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Quote Of The Day"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/v1"
+                    android:layout_centerVertical="true"
+                    android:background="@color/white"
+                    android:layout_width="50dp"
+                    android:layout_height="1dp"/>
+
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/i1"
+                    android:layout_toEndOf="@+id/v1"
+                    android:src="@drawable/ic_quote_of_the_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/i1"
+                    android:id="@+id/v2"
+                    android:background="@color/white"
+                    android:layout_width="50dp"
+                    android:layout_height="1dp"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/quote"
+                    android:text="Loading Quote.."
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/pacifico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+                <xyz.hanks.library.bang.SmallBangView
+                    android:id="@+id/like_quote"
+                    android:layout_width="30dp"
+                    android:layout_gravity="center_vertical"
+                    app:circle_start_color="@color/white"
+                    app:circle_end_color="@color/white"
+                    app:dots_primary_color="@color/red"
+                    app:dots_secondary_color="@color/red"
+                    android:layout_height="30dp">
+
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/image_like_post_layout"
+                        android:src="@drawable/quote_selector"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+
+                </xyz.hanks.library.bang.SmallBangView>
+
+                <TextView
+                    android:id="@+id/total_likes_quote"
+                    android:text="0"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

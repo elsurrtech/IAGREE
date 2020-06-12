@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/black"
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/loader_post_layout"
+        android:layout_gravity="center"
+        android:elevation="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:background="@color/black"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_publisher_post_layout"
+                android:layout_width="40dp"
+                android:background="@color/black"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:id="@+id/username_image_publisher_post_layout"
+                android:text="username"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image_publisher_post_layout"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/image_verified_post"
+                android:layout_toEndOf="@+id/username_image_publisher_post_layout"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_verified"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/text_publisher_post_layout"
+                android:layout_toEndOf="@+id/image_verified_post"
+                android:layout_marginTop="5dp"
+                android:layout_centerVertical="true"
+                android:textSize="12sp"
+                android:text="publisher"
+                android:textColor="#9c9c9c"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/more"
+                android:src="@drawable/ic_more_vert_black_24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@color/bgColor"
+            android:layout_width="match_parent"
+            android:layout_height="350dp">
+
+            <LinearLayout
+                android:id="@+id/post_layout"
+                android:layout_width="match_parent"
+                android:layout_height="350dp">
+
+                <ImageView
+                    android:background="@color/bgColor"
+                    android:id="@+id/post_image_post_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:background="@color/black"
+            android:layout_height="50dp">
+
+            <xyz.hanks.library.bang.SmallBangView
+                android:id="@+id/like_heart"
+                android:layout_width="30dp"
+                app:circle_start_color="@color/white"
+                app:circle_end_color="@color/white"
+                app:dots_primary_color="@color/red"
+                app:dots_secondary_color="@color/red"
+                android:layout_centerVertical="true"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/image_like_post_layout"
+                    android:src="@drawable/heart_selector"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </xyz.hanks.library.bang.SmallBangView>
+
+            <ImageView
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/like_heart"
+                android:id="@+id/image_comment_post_layout"
+                android:src="@drawable/ic_comment"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+            <xyz.hanks.library.bang.SmallBangView
+                android:id="@+id/save_smallBang"
+                android:layout_width="30dp"
+                app:circle_end_color="@color/white"
+                app:circle_start_color="@color/white"
+                app:dots_primary_color="@color/white"
+                app:dots_secondary_color="@color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:layout_marginEnd="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/image_save_post_layout"
+                    android:src="@drawable/save_selector"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </xyz.hanks.library.bang.SmallBangView>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_like_post_layout"
+                android:text="likes"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:id="@+id/text_time_post_layout"
+                android:text="time"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="\@"
+                android:textColor="@color/white"
+                android:id="@+id/t1"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/t2_postLayout"
+                android:text="username "
+                android:textColor="@color/white"
+                android:layout_toEndOf="@+id/t1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_toEndOf="@+id/t2_postLayout"
+                android:id="@+id/text_description_post_layout"
+                android:text="description"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/text_comment_post_layout"
+            android:text="comments"
+            android:textSize="12sp"
+            android:textColor="#9c9c9c"
+            android:layout_marginStart="15dp"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

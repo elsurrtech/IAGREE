@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".settings.PollActivity">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:background="@color/bgColor"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="User Poll"
+            android:textSize="23sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="30dp"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/r2"
+        android:layout_below="@+id/r1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background = "@color/black"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    android:text="Like the feature you want that in next update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.cardview.widget.CardView
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/bgColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                android:text="Messaging"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:textSize="12sp"
+                                android:textColor="#9c9c9c"
+                                android:text="These should be personal messaging"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content">
+
+                            <xyz.hanks.library.bang.SmallBangView
+                                android:id="@+id/image_poll_message"
+                                android:layout_width="30dp"
+                                android:layout_gravity="center_vertical"
+                                app:circle_start_color="@color/white"
+                                app:circle_end_color="@color/white"
+                                app:dots_primary_color="@color/colorPrimary"
+                                app:dots_secondary_color="@color/colorPrimary"
+                                android:layout_height="30dp">
+
+                                <ImageView
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/poll_selector"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"/>
+
+                            </xyz.hanks.library.bang.SmallBangView>
+
+                            <TextView
+                                android:id="@+id/text_poll_message"
+                                android:text="0"
+                                android:textSize="15sp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/bgColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                android:text="Videos"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:textSize="12sp"
+                                android:textColor="#9c9c9c"
+                                android:text="videos should also be there in post"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content">
+
+                            <xyz.hanks.library.bang.SmallBangView
+                                android:id="@+id/image_poll_video"
+                                android:layout_width="30dp"
+                                android:layout_gravity="center_vertical"
+                                app:circle_start_color="@color/white"
+                                app:circle_end_color="@color/white"
+                                app:dots_primary_color="@color/colorPrimary"
+                                app:dots_secondary_color="@color/colorPrimary"
+                                android:layout_height="30dp">
+
+                                <ImageView
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/poll_selector"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"/>
+
+                            </xyz.hanks.library.bang.SmallBangView>
+
+                            <TextView
+                                android:id="@+id/text_poll_video"
+                                android:text="0"
+                                android:textSize="15sp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/bgColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                android:text="Audio/Video Call"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:textSize="12sp"
+                                android:textColor="#9c9c9c"
+                                android:text="In app Audio/Video call should be there"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content">
+
+                            <xyz.hanks.library.bang.SmallBangView
+                                android:id="@+id/image_poll_videoCall"
+                                android:layout_width="30dp"
+                                android:layout_gravity="center_vertical"
+                                app:circle_start_color="@color/white"
+                                app:circle_end_color="@color/white"
+                                app:dots_primary_color="@color/colorPrimary"
+                                app:dots_secondary_color="@color/colorPrimary"
+                                android:layout_height="30dp">
+
+                                <ImageView
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/poll_selector"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"/>
+
+                            </xyz.hanks.library.bang.SmallBangView>
+
+                            <TextView
+                                android:id="@+id/text_poll_videoCall"
+                                android:text="0"
+                                android:textSize="15sp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/bgColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                android:text="Emoji/Story Filters"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:textSize="12sp"
+                                android:textColor="#9c9c9c"
+                                android:text="Story and Post Filters should be there"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content">
+
+                            <xyz.hanks.library.bang.SmallBangView
+                                android:id="@+id/image_poll_filters"
+                                android:layout_width="30dp"
+                                android:layout_gravity="center_vertical"
+                                app:circle_start_color="@color/white"
+                                app:circle_end_color="@color/white"
+                                app:dots_primary_color="@color/colorPrimary"
+                                app:dots_secondary_color="@color/colorPrimary"
+                                android:layout_height="30dp">
+
+                                <ImageView
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/poll_selector"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"/>
+
+                            </xyz.hanks.library.bang.SmallBangView>
+
+                            <TextView
+                                android:id="@+id/text_poll_filters"
+                                android:text="0"
+                                android:textSize="15sp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:text="Any other Suggestion?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_quote_of_the_day"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/suggestionBox"
+                    android:layout_margin="10dp"
+                    android:hint="  write here.."
+                    android:textColorHint="#9c9c9c"
+                    android:textColor="@color/white"
+                    android:background="@color/bgColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <Button
+                    android:id="@+id/suggestionSubmitButton"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

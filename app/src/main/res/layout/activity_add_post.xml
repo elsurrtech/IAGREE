@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent"
+    tools:context=".AddPostActivity">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:background="@color/bgColor"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@color/bgColor"
+                android:id="@+id/image_add_post_activity"
+                android:layout_width="100dp"
+                android:layout_centerVertical="true"
+                android:layout_height="100dp"/>
+
+            <EditText
+                android:layout_marginStart="5dp"
+                android:id="@+id/editText_add_post_activity"
+                android:layout_toEndOf="@+id/image_add_post_activity"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/white"
+                android:textColorHint="#dedede"
+                android:layout_centerVertical="true"
+                android:hint="Add Description.."
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <View
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:text="Your Post is:"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+      <RadioGroup
+          android:id="@+id/radioGroup"
+          android:orientation="horizontal"
+          android:layout_width="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:padding="10dp"
+          android:layout_height="wrap_content">
+
+          <RadioButton
+              android:id="@+id/personal"
+              android:text="Personal"
+              android:checked="true"
+              android:textColor="@color/white"
+              android:layout_width="wrap_content"
+              android:layout_margin="2dp"
+              android:layout_height="wrap_content"/>
+
+          <RadioButton
+              android:id="@+id/meme"
+              android:text="Meme"
+              android:textColor="@color/white"
+              android:layout_width="wrap_content"
+              android:layout_margin="2dp"
+              android:layout_height="wrap_content"/>
+
+          <RadioButton
+              android:id="@+id/informational"
+              android:text="Informational"
+              android:textColor="@color/white"
+              android:layout_width="wrap_content"
+              android:layout_margin="2dp"
+              android:layout_height="wrap_content"/>
+
+
+      </RadioGroup>
+
+        <View
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <Button
+            android:text="Share Post"
+            android:textAllCaps="false"
+            android:id="@+id/share_post_btn_addPost_activity"
+            android:layout_margin="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
