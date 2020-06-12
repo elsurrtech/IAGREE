@@ -43,7 +43,7 @@
         android:id="@+id/topPosts_recyclerView_search_fragment"
         android:layout_below="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
 
 

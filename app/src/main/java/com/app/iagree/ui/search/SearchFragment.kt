@@ -71,6 +71,7 @@ class SearchFragment : Fragment() {
         myImagesAdaptor = context?.let { MyImagesAdaptor(it,postList as ArrayList<Post>) }
         topPostsRecyclerView.adapter = myImagesAdaptor
 
+
         topPosts()
 
         //SearchView Edit text

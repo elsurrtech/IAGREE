@@ -45,6 +45,9 @@ class SettingsActivity : AppCompatActivity() {
                     .removeValue()
             }
         }
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
         userPoll.setOnClickListener {
             startActivity(Intent(this,PollActivity::class.java))

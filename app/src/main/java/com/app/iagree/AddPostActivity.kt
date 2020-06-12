@@ -51,7 +51,11 @@ class AddPostActivity : AppCompatActivity() {
                 .setAspectRatio(1,1)
                 .start(this)
         }
-
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
+        // ye thoda sa staring m personal vala tune true kiya hua ha lekin vo phir bhi category mangta tha isliye ye niche vala kiya
+             postCategory="Personal"
     }
 
     private fun uploadImage(){
