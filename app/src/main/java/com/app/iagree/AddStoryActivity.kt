@@ -62,6 +62,7 @@ class AddStoryActivity : AppCompatActivity() {
                 val progressDialog = ProgressDialog(this)
                 progressDialog.setTitle("Adding Story")
                 progressDialog.setMessage("Please Wait...adding Story")
+                progressDialog.setCancelable(false)
                 progressDialog.show()
 
                 val fileRef = storageStoryPicRef!!.child(System.currentTimeMillis().toString()+".jpg")
