@@ -236,6 +236,7 @@ public class HomeFragment : Fragment() {
                         (storyList as ArrayList<Story>).add(story!!)
                     }
                 }
+
                 storyAdaptor!!.notifyDataSetChanged()
             }
         })
