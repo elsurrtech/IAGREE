@@ -29,6 +29,10 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_users_who_liked_post)
 
+        btnBack_showLikedActivity.setOnClickListener{
+            onBackPressed()
+        }
+
         val i = intent
         id = i.getStringExtra("id")
         title = i.getStringExtra("title")

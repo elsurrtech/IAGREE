@@ -146,6 +146,8 @@ class AddPostActivity : AppCompatActivity() {
             val result = CropImage.getActivityResult(data)
             imageUri = result.uri
             image_add_post_activity.setImageURI(imageUri)
+        }else{
+            onBackPressed()
         }
     }
 }

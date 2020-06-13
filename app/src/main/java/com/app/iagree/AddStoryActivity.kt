@@ -48,6 +48,8 @@ class AddStoryActivity : AppCompatActivity() {
             imageUri = result.uri
 
             uploadStory()
+        }else{
+            onBackPressed()
         }
     }
 
