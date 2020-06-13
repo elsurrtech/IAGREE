@@ -27,7 +27,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.android.synthetic.main.search_fragment.view.*
+import kotlinx.android.synthetic.main.search_fragment.view.topPosts_recyclerView_search_fragment
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -70,6 +72,7 @@ class SearchFragment : Fragment() {
         postList = ArrayList()
         myImagesAdaptor = context?.let { MyImagesAdaptor(it,postList as ArrayList<Post>) }
         topPostsRecyclerView.adapter = myImagesAdaptor
+        topPostsRecyclerView?.visibility = View.VISIBLE
 
 
         topPosts()
@@ -87,7 +90,7 @@ class SearchFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(root.searchView.text.toString() == ""){
-
+                    recyclerView?.visibility = View.GONE
                 }else{
                     recyclerView?.visibility = View.VISIBLE
 

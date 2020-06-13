@@ -1,6 +1,7 @@
 package com.app.iagree
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -127,6 +128,20 @@ class SearchProfileFragment : Fragment() {
                 }
 
             }
+        }
+
+        view.show_followers_search.setOnClickListener {
+            val i = Intent(context,ShowUsersWhoLikedPostActivity::class.java)
+            i.putExtra("id",profileID)
+            i.putExtra("title","Followers")
+            startActivity(i)
+        }
+
+        view.show_following_search.setOnClickListener {
+            val i = Intent(context,ShowUsersWhoLikedPostActivity::class.java)
+            i.putExtra("id",profileID)
+            i.putExtra("title","Following")
+            startActivity(i)
         }
 
        //checkFollowAndFollowingButtonStatus
@@ -286,7 +301,7 @@ class SearchProfileFragment : Fragment() {
                             postCounter++
                         }
                     }
-                    total_posts_search_profile.text = postCounter.toString()
+                    total_posts_search_profile?.text = postCounter.toString()
                 }
             }
 
@@ -301,6 +316,7 @@ class SearchProfileFragment : Fragment() {
         postsRef.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
+
                     (postList as ArrayList<Post>).clear()
 
                     val privacyRef = FirebaseDatabase.getInstance().reference.child("PrivateAccounts")
@@ -328,6 +344,8 @@ class SearchProfileFragment : Fragment() {
                                             }
 
                                         }else{
+                                            show_followers_search?.isClickable = false
+                                            show_following_search?.isClickable = false
                                             r.visibility = View.GONE
                                             l.visibility = View.VISIBLE
                                         }
@@ -361,6 +379,8 @@ class SearchProfileFragment : Fragment() {
                     })
 
 
+                }else{
+                    //as
                 }
             }
 

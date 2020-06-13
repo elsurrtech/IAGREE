@@ -75,7 +75,7 @@ class NotificationAdaptor(private val mContext: Context, mNotification:List<noti
             }
 
             holder.itemView.setOnClickListener {
-                if (notification.isPost()){
+                if (notification.getpostID() != ""){
                     val editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit()
                     editor.putString("postID",notification.getpostID())
                     editor.apply()

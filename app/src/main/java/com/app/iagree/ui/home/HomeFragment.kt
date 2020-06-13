@@ -176,7 +176,7 @@ public class HomeFragment : Fragment() {
         followingRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
-                    loader_fragment_home?.visibility = View.GONE
+                    loader_layout_home?.visibility = View.GONE
                     (followingList as ArrayList<String>).clear()
                     for (snapshot in p0.children){
                         snapshot.key?.let { (followingList as ArrayList<String>).add(it) }
@@ -185,14 +185,13 @@ public class HomeFragment : Fragment() {
                     retrievePosts()
                     retrieveStories()
 
-
-                    recyclerView_home_fragment.visibility = View.VISIBLE
-                    leaderBoard_viewPager_fragment_home.visibility = View.GONE
+                    recyclerView_home_fragment?.visibility = View.VISIBLE
+                    leaderBoard_viewPager_fragment_home?.visibility = View.GONE
                 }else{
                     loader_layout_home?.visibility = View.GONE
 
-                    recyclerView_home_fragment.visibility = View.GONE
-                    leaderBoard_viewPager_fragment_home.visibility = View.VISIBLE
+                    recyclerView_home_fragment?.visibility = View.GONE
+                    leaderBoard_viewPager_fragment_home?.visibility = View.VISIBLE
                     loadLeaderBoard()
                 }
             }

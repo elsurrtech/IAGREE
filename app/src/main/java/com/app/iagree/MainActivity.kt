@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.navigation_dashboard-> {
-                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment2).commit()
+                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment2).hide(fragment1).commit()
 
                       //  fm.beginTransaction().hide(active).show(fragment2).commit()
 //                        active = fragment2
@@ -88,21 +88,21 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.navigation_search-> {
-                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment3).commit()
+                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment3).hide(fragment1).commit()
                         //fm.beginTransaction().hide(active).show(fragment3).commit()
 //                        active = fragment3
                         return true
                     }
 
                     R.id.navigation_add-> {
-                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment4).commit()
+                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment4).hide(fragment1).commit()
                         //fm.beginTransaction().hide(active).show(fragment4).commit()
                      //   active = fragment4
                         return true
                     }
 
                     R.id.navigation_notifications-> {
-                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment5).commit()
+                        fm.beginTransaction().replace(R.id.nav_host_fragment,fragment5).hide(fragment1).commit()
                         //fm.beginTransaction().hide(active).show(fragment5).commit()
                       //  active = fragment5
                         return true

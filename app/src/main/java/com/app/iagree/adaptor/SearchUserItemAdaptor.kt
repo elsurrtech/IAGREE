@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.iagree.MainActivity
 import com.app.iagree.R
 import com.app.iagree.SearchProfileFragment
+import com.app.iagree.ShowUsersWhoLikedPostActivity
 import com.app.iagree.model.User
 import com.app.iagree.ui.dashboard.DashboardFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -90,9 +91,16 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
                         .addToBackStack(null)
                       .add(R.id.nav_host_fragment,SearchProfileFragment()).commit()
                 }else{
-                    val i  = Intent(mcontext,MainActivity::class.java)
-                    i.putExtra("publisherID",user.getUID())
-                    mcontext.startActivity(i)
+//                    val pref = mcontext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit()
+//                    pref.putString("profileID",user.getUID())
+//                    pref.apply()
+//
+//                    (mcontext as FragmentActivity).supportFragmentManager.beginTransaction()
+//                        .addToBackStack(null)
+//                        .add(R.id.nav_host_fragment,SearchProfileFragment()).commit()
+//
+//                    val i = Intent(mcontext,MainActivity::class.java)
+
                 }
             }
         })

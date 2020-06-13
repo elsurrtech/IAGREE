@@ -2,6 +2,7 @@ package com.app.iagree
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_show_users_who_liked_post.*
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 import kotlinx.android.synthetic.main.search_fragment.view.*
 
@@ -61,12 +63,19 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
         ref.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
 
-
-                (idList as ArrayList<String>).clear()
-                for (snapshot in p0.children) {
-                    (idList as ArrayList<String>).add(snapshot.key!!)
+                if (p0.exists()){
+                    noPost_show_liked?.visibility = View.GONE
+                    (idList as ArrayList<String>).clear()
+                    for (snapshot in p0.children) {
+                        (idList as ArrayList<String>).add(snapshot.key!!)
+                    }
+                    showUser()
+                }else{
+                    noPost_show_liked?.visibility = View.VISIBLE
                 }
-                showUser()
+
+
+
 
             }
 
@@ -87,12 +96,19 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
         followingRef.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
 
-
+                if (p0.exists()){
+                    noPost_show_liked?.visibility = View.GONE
                     (idList as ArrayList<String>).clear()
                     for (snapshot in p0.children) {
                         (idList as ArrayList<String>).add(snapshot.key!!)
                     }
                     showUser()
+                }else{
+                    noPost_show_liked?.visibility = View.VISIBLE
+                }
+
+
+
 
             }
 
@@ -113,12 +129,18 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
         followerRef.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
 
-
-                (idList as ArrayList<String>).clear()
-                for (snapshot in p0.children) {
-                    (idList as ArrayList<String>).add(snapshot.key!!)
+                if (p0.exists()){
+                    noPost_show_liked?.visibility = View.GONE
+                    (idList as ArrayList<String>).clear()
+                    for (snapshot in p0.children) {
+                        (idList as ArrayList<String>).add(snapshot.key!!)
+                    }
+                    showUser()
+                }else{
+                    noPost_show_liked?.visibility = View.VISIBLE
                 }
-                showUser()
+
+
 
             }
 
@@ -137,6 +159,7 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
         LikesRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
+                    noPost_show_liked?.visibility = View.GONE
                     (idList as ArrayList<String>).clear()
                     for (snapshot in p0.children){
                         (idList as ArrayList<String>).add(snapshot.key!!)
@@ -144,6 +167,8 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
                     }
 
                     showUser()
+                }else{
+                    noPost_show_liked?.visibility = View.VISIBLE
                 }
 
             }

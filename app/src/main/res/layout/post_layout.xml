@@ -46,10 +46,10 @@
                 android:visibility="gone"
                 android:id="@+id/image_verified_post"
                 android:layout_toEndOf="@+id/username_image_publisher_post_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="15dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_verified"
-                android:layout_height="wrap_content"/>
+                android:layout_height="15dp"/>
 
             <TextView
                 android:id="@+id/text_publisher_post_layout"
@@ -170,17 +170,6 @@
                 android:layout_height="wrap_content"/>
 
 
-
-            <TextView
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="15dp"
-                android:id="@+id/text_time_post_layout"
-                android:text="time"
-                android:textSize="12sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
         </RelativeLayout>
 

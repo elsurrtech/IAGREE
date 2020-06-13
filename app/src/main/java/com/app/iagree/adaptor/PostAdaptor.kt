@@ -50,7 +50,6 @@ class PostAdaptor
         var publisher: TextView = itemView.findViewById(R.id.text_publisher_post_layout)
         var description: TextView = itemView.findViewById(R.id.text_description_post_layout)
         var comment: TextView = itemView.findViewById(R.id.text_comment_post_layout)
-        var time : TextView = itemView.findViewById(R.id.text_time_post_layout)
         var more : ImageView = itemView.findViewById(R.id.more)
         var postLayout: LinearLayout = itemView.findViewById(R.id.post_layout)
         var loader_layout: LinearLayout = itemView.findViewById(R.id.loader_post_layout)
@@ -120,26 +119,37 @@ class PostAdaptor
 
         holder.userName.setOnClickListener {
 
-            val editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit()
-            editor.putString("profileID",post.getPublisher())
-            editor.apply()
-            (mContext as FragmentActivity).supportFragmentManager
-                .beginTransaction()
-                .addToBackStack(null)
-                .add(R.id.nav_host_fragment, SearchProfileFragment())
-                .hide(HomeFragmentContainer()).commit()
+            if (firebaseUser!!.uid == post.getPublisher()){
+                Toast.makeText(mContext,"Hey! its your own Profile",Toast.LENGTH_SHORT).show()
+            }else{
+                val editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit()
+                editor.putString("profileID",post.getPublisher())
+                editor.apply()
+                (mContext as FragmentActivity).supportFragmentManager
+                    .beginTransaction()
+                    .addToBackStack(null)
+                    .add(R.id.nav_host_fragment, SearchProfileFragment())
+                    .hide(HomeFragmentContainer()).commit()
+            }
+
+
 
         }
 
         holder.profileImg.setOnClickListener {
-            val editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit()
-            editor.putString("profileID",post.getPublisher())
-            editor.apply()
-            (mContext as FragmentActivity).supportFragmentManager
-                .beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.nav_host_fragment, SearchProfileFragment()
-                ).commit()
+            if (firebaseUser!!.uid == post.getPublisher()){
+                Toast.makeText(mContext,"Hey! its your own Profile",Toast.LENGTH_SHORT).show()
+            }else{
+                val editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit()
+                editor.putString("profileID",post.getPublisher())
+                editor.apply()
+                (mContext as FragmentActivity).supportFragmentManager
+                    .beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.nav_host_fragment, SearchProfileFragment()
+                    ).commit()
+            }
+
         }
 
         publisherInfo(holder.profileImg, holder.userName,holder.t2, holder.publisher, post.getPublisher())
@@ -176,6 +186,13 @@ class PostAdaptor
         //comment
         holder.commentButton.setOnClickListener {
 
+            val i = Intent(mContext,CommentsActivity::class.java)
+            i.putExtra("postID",post.getPostID())
+            i.putExtra("publisherID",post.getPublisher())
+            mContext.startActivity(i)
+        }
+
+        holder.comment.setOnClickListener {
             val i = Intent(mContext,CommentsActivity::class.java)
             i.putExtra("postID",post.getPostID())
             i.putExtra("publisherID",post.getPublisher())

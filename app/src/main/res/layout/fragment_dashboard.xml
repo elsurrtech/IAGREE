@@ -55,7 +55,6 @@
                 <com.flaviofaria.kenburnsview.KenBurnsView
                     android:id="@+id/blur_image"
                     android:backgroundTint="@color/white"
-                    android:scaleType="centerCrop"
                     android:background="@color/bgColor"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"/>

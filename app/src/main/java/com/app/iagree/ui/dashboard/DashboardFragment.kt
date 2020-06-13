@@ -101,7 +101,6 @@ class DashboardFragment : Fragment() {
         val recyclerViewUploads: RecyclerView
         recyclerViewUploads = root.findViewById(R.id.recyclerView_uploads_fragment_dashboard)
         recyclerViewUploads.setHasFixedSize(true)
-        recyclerViewUploads.isNestedScrollingEnabled = false
         val linearLayoutManager: LinearLayoutManager = GridLayoutManager(context,3)
         recyclerViewUploads.layoutManager = linearLayoutManager
 
@@ -114,7 +113,6 @@ class DashboardFragment : Fragment() {
         val recyclerViewSaves: RecyclerView
         recyclerViewSaves = root.findViewById(R.id.recyclerView_saved_fragment_dashboard)
         recyclerViewSaves.setHasFixedSize(true)
-        recyclerViewSaves.isNestedScrollingEnabled = false
         val linearLayoutManagerSave: LinearLayoutManager = GridLayoutManager(context,3)
         recyclerViewSaves.layoutManager = linearLayoutManagerSave
 
