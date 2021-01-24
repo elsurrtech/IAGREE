@@ -33,6 +33,10 @@ class PollActivity : AppCompatActivity() {
         numberOfLikesVideoCall(text_poll_videoCall)
         numberOfLikesFilters(text_poll_filters)
 
+        btnBack_poll.setOnClickListener {
+            onBackPressed()
+        }
+
         //Message Poll
         image_poll_message.setOnClickListener {
             if (image_poll_message.isSelected){
@@ -145,6 +149,8 @@ class PollActivity : AppCompatActivity() {
 
 
         }
+
+
 
     }
 
@@ -295,4 +301,11 @@ class PollActivity : AppCompatActivity() {
         })
 
     }
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
+
 }

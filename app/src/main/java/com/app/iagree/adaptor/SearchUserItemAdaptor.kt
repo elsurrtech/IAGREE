@@ -61,7 +61,7 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
 
         holder.usernameTextView.text = user.getUsername()
         holder.userFullnameTextView.text = user.getFullname()
-        Picasso.get().load(user.getImage()).placeholder(R.drawable.ic_account_circle_black_24dp).into(holder.userProfileImageview)
+        Picasso.get().load(user.getImage()).resize(200,200).onlyScaleDown().placeholder(R.drawable.ic_account_circle_black_24dp).into(holder.userProfileImageview)
 
 
 
@@ -105,6 +105,8 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
             }
         })
 
+        checkFollowingStatus(user.getUID(),holder.userFollowButton)
+
 
         holder.userFollowButton.setOnClickListener {
             if (holder.userFollowButton.text.toString() == "Follow"){
@@ -122,7 +124,7 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
                                         .child("Followers").child(it.toString())
                                         .setValue(true).addOnCompleteListener { task ->
                                             if (task.isSuccessful){
-                                                holder.userFollowButton.text = "Following"
+
                                             }
                                         }
                                 }
@@ -149,7 +151,7 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
                                         .child("Followers").child(it.toString())
                                         .removeValue().addOnCompleteListener { task ->
                                             if (task.isSuccessful){
-                                                holder.userFollowButton.text = "Request"
+
                                             }
                                         }
                                 }
@@ -167,7 +169,7 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
                         .child("Requests").child(it.toString()).child("requestPublisher")
                         .setValue(it.toString()).addOnCompleteListener { task ->
                             if (task.isSuccessful){
-                                holder.userFollowButton.text = "Requested"
+
                             }
                         }
                 }
@@ -181,7 +183,7 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
                         .child("Requests").child(it.toString())
                         .removeValue().addOnCompleteListener { task ->
                             if (task.isSuccessful){
-                                holder.userFollowButton.text = "Request"
+
                             }
                         }
                 }
@@ -192,7 +194,7 @@ class SearchUserItemAdaptor(private var mcontext: Context,private var mUser: Lis
 
 
 
-        checkFollowingStatus(user.getUID(),holder.userFollowButton)
+
 
 
     }

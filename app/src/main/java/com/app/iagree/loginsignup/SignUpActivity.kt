@@ -2,6 +2,7 @@ package com.app.iagree.loginsignup
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,7 +17,9 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.whenCreated
 import com.app.iagree.MainActivity
 import com.app.iagree.R
+import com.app.iagree.SaveLanguage
 import com.app.iagree.model.User
+import com.app.iagree.policy.PrivacyPolicyActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
@@ -38,6 +41,18 @@ class SignUpActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener {
             val i = Intent(this,LoginActivity::class.java)
+            startActivity(i)
+        }
+
+        privacy_signup.setOnClickListener {
+            val i = Intent(this,PrivacyPolicyActivity::class.java)
+            startActivity(i)
+        }
+
+        terms_signup.setOnClickListener {
+            val url = "https://piktofill.blogspot.com/p/terms-and-conditions.html"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
             startActivity(i)
         }
 
@@ -115,9 +130,10 @@ class SignUpActivity : AppCompatActivity() {
 
         when{
             TextUtils.isEmpty(fullName) -> Toast.makeText(this,"Full Name Required",Toast.LENGTH_SHORT).show()
-            TextUtils.isEmpty(email) -> Toast.makeText(this,"email Required",Toast.LENGTH_SHORT).show()
-            TextUtils.isEmpty(username) -> Toast.makeText(this,"username Required",Toast.LENGTH_SHORT).show()
-            TextUtils.isEmpty(password) -> Toast.makeText(this,"password Required",Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(email) -> Toast.makeText(this,"Valid Email Required",Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(username) -> Toast.makeText(this,"Enter a username",Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(password) -> Toast.makeText(this,"Password Required",Toast.LENGTH_SHORT).show()
+            !checkBox.isChecked -> Toast.makeText(this,"Click Checkbox to continue",Toast.LENGTH_SHORT).show()
 
             else->{
 
@@ -134,6 +150,14 @@ class SignUpActivity : AppCompatActivity() {
                     .addOnCompleteListener {
                         task ->
                         if (task.isSuccessful){
+
+                            mAuth.currentUser!!.sendEmailVerification().addOnCompleteListener {
+                                if (task.isSuccessful){
+                                    Toast.makeText(this,"Email Sent!",Toast.LENGTH_SHORT).show()
+                                }else{
+                                    Toast.makeText(this,"Please Enter a Valid Email!",Toast.LENGTH_SHORT).show()
+                                }
+                            }
 
                             saveUserInfo(fullName,username,email,progress)
 
@@ -165,22 +189,18 @@ class SignUpActivity : AppCompatActivity() {
         userMap["email"] = email
         userMap["bio"] = "Hey, This is bio Field"
         userMap["image"] = "https://firebasestorage.googleapis.com/v0/b/i-agree-ee3e4.appspot.com/o/Default%20Images%2Fimg2.png?alt=media&token=635aa0e4-6fde-42ed-9ada-046db18c27d0"
-
+        userMap["college"] =""
+        userMap["degree"] = ""
+        userMap["programme"] = ""
+        userMap["phone"]=""
 
         userRef.child(currentUserId).setValue(userMap)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     progressDialog.dismiss()
-                    Toast.makeText(this,"Account Successfully Created",Toast.LENGTH_LONG).show()
-
-                    FirebaseDatabase.getInstance().reference
-                        .child("Follow").child(currentUserId)
-                        .child("Following").child(currentUserId).setPriority(true)
-
-                    val i  = Intent(this,MainActivity::class.java)
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(i)
-                    finish()
+                    Toast.makeText(this,"Please Verify Email",Toast.LENGTH_LONG).show()
+                    SaveLanguage(this).setCollege("none")
+                    onBackPressed()
                 }else{
                     val message = task.exception!!.toString()
                     Toast.makeText(this,"Error: $message",Toast.LENGTH_LONG).show()

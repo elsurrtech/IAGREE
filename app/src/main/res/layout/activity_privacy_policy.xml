@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".policy.PrivacyPolicyActivity">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:background="@color/bgColor"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/t"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Privacy Policy"
+            android:textSize="22sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/btnBack_privacyPolicy"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="30dp"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:padding="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="What type of data do we collect"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="The types of information we collect depend on how you use our productsWe collect the content and other information you provide when you use Piktofill,inclding when you sign up for an account, create or share content
+        This can include information in or about the content you provide. It can also include what you see through features we provide, such as our camera."
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Account information. To create an account, you must provide a username and password. Your username is public, and it doesn’t have to be related to your real name. You may also provide an email address. We also store your user account preferences and settings."
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Content you submit. We collect the content you submit to the Services. This includes your posts and comments including saved drafts, and your reports and other communications with us. Your content may include text, images"
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Actions you take. We collect information about the actions you take when using the Services. This includes your interactions with content, like Liking, saving, and reporting. It also includes your interactions with other users, such as following,status."
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Other information. You may choose to provide other information directly to us. For example, we may collect information when you fill out user poll form or promotions, apply for a job, request customer support or otherwise communicate with us."
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="How we use information about you"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Provide, maintain, and improve the Services;
+Research and develop new services;
+Help protect the safety of Piktofill and our users, which includes blocking suspected spammers, addressing abuse, and enforcing other policies;
+Send you technical notices, updates, security alerts and other support and administrative messages;
+Provide customer service;
+Communicate with you about products, services, offers, promotions, and events, and provide other news and information we think will be of interest to you ;
+Monitor and analyze trends, usage, and activities in connection with our Services; and
+Personalize the Services and provide advertisements, content and features that match user profiles or interests. "
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="How information about you is shared"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="When you submit content (such as a post or comment) to the Services, any visitors to and users of our Services will be able to see that content, the username associated with the content. Although some parts of the Services may be private or quarantined, they may become public and you should take that into consideration before posting to the Services."
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Please note that, even when you delete your account, the posts, comments and messages you submit through the Services may still be viewable or available on our servers."
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="we do not share, sell, or give away your personal information to third parties"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

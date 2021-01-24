@@ -1,6 +1,7 @@
 package com.app.iagree.settings
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +9,10 @@ import android.view.View
 import android.view.View.inflate
 import android.widget.Button
 import android.widget.Switch
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.appcompat.app.AlertDialog
+import com.app.iagree.AboutActivity
 import com.app.iagree.R
 import com.app.iagree.loginsignup.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -27,12 +30,49 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        val x = intent.getStringExtra("totalPosts")
+
         btnLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val i = Intent(this,LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(i)
             finish()
+        }
+
+        about.setOnClickListener {
+            val i  = Intent(this,AboutActivity::class.java)
+            startActivity(i)
+        }
+
+        help.setOnClickListener {
+            val i = Intent(Intent.ACTION_SEND)
+            i.data = Uri.parse("Email")
+            val x = arrayOf("quiqlecorp@gmail.com")
+            i.putExtra(Intent.EXTRA_EMAIL,x)
+            i.putExtra(Intent.EXTRA_SUBJECT,"Piktofill Complaint")
+            i.putExtra(Intent.EXTRA_TEXT,"GMAIL: "+FirebaseAuth.getInstance().currentUser!!.uid + ": \nWRITE YOUR COMPLAINT HERE")
+            i.type = "message/rfc822"
+            val a = Intent.createChooser(i,"Launch Gmail")
+            startActivity(a)
+        }
+
+        support.setOnClickListener {
+            startActivity(Intent(this,SupportActivity::class.java))
+        }
+
+        meetDeveloper.setOnClickListener {
+            startActivity(Intent(this,AboutDeveloper::class.java))
+
+        }
+
+        verification.setOnClickListener {
+            if (x!!> 99.toString()){
+                FirebaseDatabase.getInstance().reference.child("AppliedForVerification").child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(true)
+                Toast.makeText(this,"Verification under Progres",Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this,"NOT ELIGIBLE: Total post must be greater than 100",Toast.LENGTH_LONG).show()
+            }
         }
 
         val toggleButton = findViewById<Switch>(R.id.toggleButton_accountPrivacy_settingsActivity)
@@ -67,6 +107,8 @@ class SettingsActivity : AppCompatActivity() {
             }
         })
 
+
+
     }
 
     fun showAlertAccountPrivacy(t:Switch){
@@ -97,4 +139,11 @@ class SettingsActivity : AppCompatActivity() {
 
 
     }
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
+
 }

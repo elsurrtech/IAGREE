@@ -62,7 +62,6 @@ class CommentsAdaptor (private var postID: String,private val mContext: Context,
                override fun onMenuItemClick(item: MenuItem?): Boolean {
                    when(item!!.itemId){
                        R.id.delete-> keyList?.get(position!!)?.let { it1 -> deleteComment(it1) }
-
                    }
 
                    return true
@@ -82,7 +81,7 @@ class CommentsAdaptor (private var postID: String,private val mContext: Context,
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
                     val user = p0.getValue(User::class.java)
-                    Picasso.get().load(user!!.getImage()).placeholder(R.drawable.ic_account_circle_black_24dp).into(imageProfile)
+                    Picasso.get().load(user!!.getImage()).resize(200,200).onlyScaleDown().placeholder(R.drawable.ic_account_circle_black_24dp).into(imageProfile)
                     username.text = user!!.getUsername()
                 }
             }

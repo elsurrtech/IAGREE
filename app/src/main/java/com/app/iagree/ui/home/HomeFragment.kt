@@ -18,12 +18,15 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
@@ -32,6 +35,7 @@ import com.app.iagree.R
 import com.app.iagree.adaptor.*
 import com.app.iagree.model.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -51,6 +55,9 @@ public class HomeFragment : Fragment() {
     private var notificationAdaptor: RequestAdaptor? = null
     val CHANNEL_ID = "com.app.iagree.ANDROID"
 
+    private lateinit var profileID: String
+    private lateinit var firebaseUser: FirebaseUser
+
 
     private var postAdaptor: PostAdaptor? = null
     private var postList: MutableList<Post>? = null
@@ -64,6 +71,10 @@ public class HomeFragment : Fragment() {
     var connectivity: ConnectivityManager? = null
     var info : NetworkInfo? = null
 
+    var page = 1
+    var isLoading = false
+    val limit = 5
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -72,6 +83,9 @@ public class HomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
             val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        firebaseUser = FirebaseAuth.getInstance().currentUser!!
+        profileID = firebaseUser.uid
 
         notificationList = ArrayList()
         notificationAdaptor = RequestAdaptor(requireContext(),notificationList as ArrayList<requests>)
@@ -113,6 +127,10 @@ public class HomeFragment : Fragment() {
 
         viewPager.setPageTransformer(c)
 
+        view.scroll_to_top?.visibility = View.GONE
+
+
+
 
         var recyclerView: RecyclerView? = null
         recyclerView = view.findViewById(R.id.recyclerView_home_fragment)
@@ -122,10 +140,16 @@ public class HomeFragment : Fragment() {
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.setHasFixedSize(true)
         recyclerView.itemAnimator = DefaultItemAnimator()
+        recyclerView.setItemViewCacheSize(5)
+//        view.scroll_to_top?.setOnClickListener {
+//            recyclerView.lol(0,LinearSmoothScroller.SNAP_TO_START)
+//        }
+
 
         postList = ArrayList()
         postAdaptor = context?.let { PostAdaptor(it,postList as ArrayList<Post>) }
         recyclerView.adapter = postAdaptor
+
 
 
         var recyclerViewStory : RecyclerView? = null
@@ -136,6 +160,11 @@ public class HomeFragment : Fragment() {
         storyList = ArrayList()
         storyAdaptor = context?.let { StoryAdaptor(it,storyList as ArrayList<Story>) }
         recyclerViewStory.adapter = storyAdaptor
+
+
+
+
+
 
 
 
@@ -162,8 +191,11 @@ public class HomeFragment : Fragment() {
             view.image_noPost.visibility = View.VISIBLE
         }
 
+
+
         return view
     }
+
 
     private fun checkFollowings() {
 
@@ -215,7 +247,7 @@ public class HomeFragment : Fragment() {
 
                 (storyList as ArrayList<Story>).clear()
 
-                (storyList as ArrayList<Story>).add(Story("",0,0,"",FirebaseAuth.getInstance().currentUser!!.uid))
+                (storyList as ArrayList<Story>).add(Story("",0,0,"",FirebaseAuth.getInstance().currentUser!!.uid,""))
 
                 loader_layout_home?.visibility = View.GONE
 
@@ -251,16 +283,18 @@ public class HomeFragment : Fragment() {
         postRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
-                    postList?.clear()
+                    (postList as ArrayList<Post>)?.clear()
                     for (snapsot in p0.children){
                         val post = snapsot.getValue(Post::class.java)
 
                         for (userid in (followingList as ArrayList<String>) ){
                             if (post!!.getPublisher() == userid){
-                                postList!!.add(post)
+                                (postList as ArrayList<Post>).add(post)
                             }
-
                             postAdaptor!!.notifyDataSetChanged()
+
+
+                           //notify
 
                         }
                     }
@@ -311,4 +345,12 @@ public class HomeFragment : Fragment() {
         return false
     }
 
+    fun RecyclerView.lol(position: Int, snapMode: Int = LinearSmoothScroller.SNAP_TO_START) {
+        val smoothScroller = object : LinearSmoothScroller(this.context) {
+            override fun getVerticalSnapPreference(): Int = snapMode
+            override fun getHorizontalSnapPreference(): Int = snapMode
+        }
+        smoothScroller.targetPosition = position
+        layoutManager?.startSmoothScroll(smoothScroller)
+    }
 }

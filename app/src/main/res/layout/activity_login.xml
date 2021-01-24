@@ -13,7 +13,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:text="QuiQle"
+        android:text="Piktofill"
         android:textSize="23sp"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -27,7 +27,7 @@
         android:backgroundTint="@color/white"
         app:boxStrokeColor="@color/white"
         app:hintTextColor="@color/white"
-        android:hint="Email"
+        android:hint="@string/email"
         app:boxBackgroundColor="@color/bgColor"
         android:textColorHint="@color/white"
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_marginTop="10dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_width="match_parent"
@@ -68,17 +68,18 @@
     <Button
         android:id="@+id/btnLogin"
         android:textSize="17sp"
-        android:text="Login"
+        android:text="@string/login"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
 
     <TextView
+        android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Forgot Password?"
+        android:text="@string/forgetPassword"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
@@ -89,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="or"
+        android:text="@string/or"
         android:layout_marginTop="10dp"
         android:textSize="23sp"
         android:textAllCaps="false"
@@ -98,13 +99,13 @@
 
     <Button
         android:id="@+id/btnSignUp"
-        android:textSize="17sp"
-        android:text="Sign Up"
+        android:textSize="15sp"
+        android:text="@string/signUp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"/>
 
 
 

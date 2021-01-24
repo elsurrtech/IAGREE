@@ -1,10 +1,39 @@
 <resources>
-    <string name="app_name">QuiQle</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name" translatable="false">Piktofill</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="title_notifications" translatable="false">Notifications</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+    //login Activity
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgetPassword">Forget Password?</string>
+    <string name="or">or</string>
+    <string name="signUp">Sign Up</string>
+
+    //About Activity
+    <string name="about">About</string>
+    <string name="privacyPolicy">Privacy Policy</string>
+    <string name="termsandconditions">Terms and Conditions</string>
+    <string name="acknowledgement">Acknowledgements</string>
+
+    //Add Answer Activity
+    <string name="addAnswer">Add Answer</string>
+    <string name="addQuestion">Add Question</string>
+    <string name="details">Details</string>
+    <string name="addaphoto">Add a Photo</string>
+    <string name="typeAnswer">Type Answer Here..</string>
+    <string name="areyousure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="post">Post</string>
+
+    //Add Post Activity
+    <string name="addDescription">Add Description</string>
+
 
 </resources>

@@ -9,9 +9,21 @@
         <item name="android:statusBarColor">@color/bgColor</item>
         <item name="android:navigationBarColor">@color/black</item>
         <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowBackground">@color/black</item>
     </style>
 
     <style name="MyTextViewSubtitle">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Subhead</item>
+    </style>
+
+    <style name="QuestionTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowBackground">@color/black</item>
     </style>
 </resources>

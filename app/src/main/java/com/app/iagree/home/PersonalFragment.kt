@@ -1,6 +1,7 @@
 package com.app.iagree.home
 
 import android.os.Bundle
+import android.renderscript.Sampler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agrawalsuneet.dotsloader.loaders.LazyLoader
 import com.app.iagree.R
+import com.app.iagree.adaptor.EventsAdaptor
 import com.app.iagree.adaptor.PostAdaptor
 import com.app.iagree.model.Post
+import com.app.iagree.model.event
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,11 +26,16 @@ import kotlinx.android.synthetic.main.fragment_info.*
 import kotlinx.android.synthetic.main.fragment_memes.*
 import kotlinx.android.synthetic.main.fragment_personal.*
 
+//Events
+
 class PersonalFragment : Fragment() {
 
     private var postAdaptor: PostAdaptor? = null
     private var postList: MutableList<Post>? = null
     private var followingList: MutableList<String>? = null
+
+    private var eventAdaptor : EventsAdaptor? = null
+    private var eventList : MutableList<event>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,33 +47,41 @@ class PersonalFragment : Fragment() {
         var recyclerView: RecyclerView? = null
         recyclerView = view.findViewById(R.id.recyclerView_personal_fragment)
         val linearLayoutManager = LinearLayoutManager(context)
-        linearLayoutManager.reverseLayout = true
-        linearLayoutManager.stackFromEnd = true
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.setHasFixedSize(true)
 
-        postList = ArrayList()
-        postAdaptor = context?.let { PostAdaptor(it,postList as ArrayList<Post>) }
-        recyclerView.adapter = postAdaptor
+        eventList = ArrayList()
+        eventAdaptor = context?.let { EventsAdaptor(it,eventList as ArrayList<event>) }
+        recyclerView.adapter= eventAdaptor
 
-        //loader
-        val loaderFragmentDashboard = view.findViewById<LinearLayout>(R.id.loader_fragment_personal)
 
-        val loader = LazyLoader(requireContext(),15,50, ContextCompat.getColor(requireContext(), R.color.white),
-            ContextCompat.getColor(requireContext(), R.color.white),
-            ContextCompat.getColor(requireContext(), R.color.white)).apply {
-            animDuration = 1500
-            firstDelayDuration = 100
-            secondDelayDuration = 200
-            interpolator = DecelerateInterpolator()
-        }
-
-        loaderFragmentDashboard.addView(loader)
-
-        checkFollowings()
+        checkEvents()
 
 
         return view
+    }
+
+    private fun checkEvents(){
+
+        val ref = FirebaseDatabase.getInstance().reference.child("Events")
+        ref.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()){
+                    eventList!!.clear()
+                    for (snapshot in p0.children){
+                        val x = snapshot.getValue(event::class.java)
+                        eventList!!.add(x!!)
+                    }
+
+                    eventAdaptor!!.notifyDataSetChanged()
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+
     }
 
     private fun checkFollowings() {
@@ -84,7 +100,7 @@ class PersonalFragment : Fragment() {
                         snapshot.key?.let { (followingList as ArrayList<String>).add(it) }
                     }
 
-                    retrievePosts()
+                    //retrievePosts()
                 }
             }
 
@@ -102,8 +118,6 @@ class PersonalFragment : Fragment() {
         postRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 postList?.clear()
-
-                loader_layout_personal?.visibility = View.GONE
 
                 for (snapsot in p0.children){
                     val post = snapsot.getValue(Post::class.java)

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //login page
+    <string name="email">e-pasts</string>
+    <string name="password">Paroli</string>
+    <string name="login">Pieslēgties</string>
+    <string name="forgetPassword">Aizmirsti paroli?</string>
+    <string name="or">vai</string>
+    <string name="signUp">Pierakstīties</string>
+
+    //About Activity
+    <string name="about">par</string>
+    <string name="privacyPolicy">Privātuma politika</string>
+    <string name="termsandconditions">noteikumi un nosacījumi</string>
+    <string name="acknowledgement">atzinumi</string>
+
+    //Add Answer Activity
+    <string name="addAnswer">pievienot atbildi</string>
+    <string name="addQuestion">pievienot jautājumu</string>
+    <string name="details">informācija</string>
+    <string name="addaphoto">pievienojiet fotoattēlu</string>
+    <string name="typeAnswer">Šeit ierakstiet Atbildēt</string>
+    <string name="areyousure">Vai tu esi pārliecināts?</string>
+    <string name="yes">Jā</string>
+    <string name="no">Nē</string>
+    <string name="post">pastu</string>
+
+    //Add Post Activity
+    <string name="addDescription">pievienot aprakstu</string>
+
+
+</resources>

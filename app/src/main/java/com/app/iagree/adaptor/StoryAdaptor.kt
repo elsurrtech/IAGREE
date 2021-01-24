@@ -133,20 +133,22 @@ class StoryAdaptor(private val mContext:Context,private val mStory: List<Story>)
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                var i = 0
-                for(snapshot in p0.children  ){
-                    if (!snapshot.child("views").child(FirebaseAuth.getInstance()
-                            .currentUser!!.uid).exists() && System.currentTimeMillis() < snapshot.getValue(Story::class.java)!!.getTimeEnd())
-                    {
-                        i++
+                if (p0.exists()){
+                    var i = 0
+                    for(snapshot in p0.children  ){
+                        if (!snapshot.child("views").child(FirebaseAuth.getInstance()
+                                .currentUser!!.uid).exists() && System.currentTimeMillis() < snapshot.getValue(Story::class.java)!!.getTimeEnd())
+                        {
+                            i++
+                        }
                     }
-                }
-                if (i>0){
-                    viewHolder.story_image!!.visibility = View.VISIBLE
-                    viewHolder.story_image_seen!!.visibility = View.GONE
-                }else{
-                    viewHolder.story_image!!.visibility = View.GONE
-                    viewHolder.story_image_seen!!.visibility = View.VISIBLE
+                    if (i>0){
+                        viewHolder.story_image!!.visibility = View.VISIBLE
+                        viewHolder.story_image_seen!!.visibility = View.GONE
+                    }else{
+                        viewHolder.story_image!!.visibility = View.GONE
+                        viewHolder.story_image_seen!!.visibility = View.VISIBLE
+                    }
                 }
             }
         })
@@ -158,7 +160,7 @@ class StoryAdaptor(private val mContext:Context,private val mStory: List<Story>)
 
         storyRef.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
-                var counter = 0
+                    var counter = 0
                     val timeCurrent=System.currentTimeMillis()
 
                     for (snapshot in p0.children){
@@ -171,44 +173,45 @@ class StoryAdaptor(private val mContext:Context,private val mStory: List<Story>)
                         }
                     }
 
-                if (click){
-                    if (counter>0){
-                        val alertDialog = AlertDialog.Builder(mContext).create()
-                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "View Story"){
-                                dialog: DialogInterface?, which: Int ->
+                    if (click){
+                        if (counter>0){
+                            val alertDialog = AlertDialog.Builder(mContext).create()
+                            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "View Story"){
+                                    dialog: DialogInterface?, which: Int ->
 
-                            val i = Intent(mContext, StoryActivity::class.java)
-                            i.putExtra("userid",FirebaseAuth.getInstance().currentUser!!.uid)
-                            mContext.startActivity(i)
-                            dialog!!.dismiss()
+                                val i = Intent(mContext, StoryActivity::class.java)
+                                i.putExtra("userid",FirebaseAuth.getInstance().currentUser!!.uid)
+                                mContext.startActivity(i)
+                                dialog!!.dismiss()
+                            }
+
+                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Add Story"){
+                                    dialog: DialogInterface?, which: Int ->
+
+                                val i = Intent(mContext, AddStoryActivity::class.java)
+                                i.putExtra("userid",FirebaseAuth.getInstance().currentUser!!.uid)
+                                mContext.startActivity(i)
+                                dialog!!.dismiss()
+                            }
+
+                            alertDialog.show()
                         }
-
-                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Add Story"){
-                                dialog: DialogInterface?, which: Int ->
-
+                        else{
                             val i = Intent(mContext, AddStoryActivity::class.java)
                             i.putExtra("userid",FirebaseAuth.getInstance().currentUser!!.uid)
                             mContext.startActivity(i)
-                            dialog!!.dismiss()
                         }
-
-                        alertDialog.show()
                     }
                     else{
-                        val i = Intent(mContext, AddStoryActivity::class.java)
-                        i.putExtra("userid",FirebaseAuth.getInstance().currentUser!!.uid)
-                        mContext.startActivity(i)
+                        if (counter>0){
+                            textView?.text = "My Story"
+                            imageView?.visibility =  View.GONE
+                        }else{
+                            textView?.text = "Add Story"
+                            imageView?.visibility = View.VISIBLE
+                        }
                     }
-                }
-                else{
-                    if (counter>0){
-                        textView.text = "My Story"
-                        imageView.visibility =  View.GONE
-                    }else{
-                        textView.text = "Add Story"
-                        imageView.visibility = View.VISIBLE
-                    }
-                }
+
             }
 
             override fun onCancelled(p0: DatabaseError) {

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent"
+    tools:context=".AddAnswerActivity">
+
+    <TextView
+        android:id="@+id/question_add_answer"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.borjabravo.readmoretextview.ReadMoreTextView
+        android:id="@+id/details_add_answers"
+        android:textColor="#9c9c9c"
+        android:layout_below="@+id/question_add_answer"
+        android:textStyle="bold"
+        android:text="@string/details"
+        app:trimCollapsedText=" Read Less"
+        app:trimExpandedText=" Read More"
+        app:trimLength="200"
+        app:trimMode="trimModeLength"
+        app:colorClickableText="#9c9c9c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/r3"
+        android:layout_below="@id/details_add_answers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <Button
+            android:layout_alignParentEnd="true"
+            android:text="@string/addaphoto"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/bgColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@+id/details_add_answers"
+        android:layout_above="@+id/r3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:textColorHint="#9c9c9c"
+                android:hint="@string/typeAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/r2"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnChoose_Category"
+            android:visibility="gone"
+            android:backgroundTint="@color/bgColor"
+            android:layout_margin="10dp"
+            android:text="Choose a Category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:id="@+id/are_you_sure"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_toStartOf="@+id/btnNo_question"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="@string/areyousure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnNo_question"
+                android:text="@string/no"
+                android:backgroundTint="@color/bgColor"
+                android:layout_margin="10dp"
+                android:layout_toStartOf="@+id/btnYes_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnYes_question"
+                android:text="@string/yes"
+                android:layout_margin="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/btnPost_question"
+            android:text="@string/post"
+            android:layout_margin="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

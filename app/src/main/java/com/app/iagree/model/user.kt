@@ -6,16 +6,24 @@ class User {
     private var uid: String = ""
     private var bio: String = ""
     private var image: String = ""
+    private var college:String = ""
+    private var degree:String = ""
+    private var programme:String = ""
+    private var phone = ""
 
     constructor()
 
-    constructor(username:String,fullname:String,uid:String,bio:String,image:String){
+    constructor(username:String,fullname:String,uid:String,bio:String,image:String, college:String, degree:String, programme:String, phone:String){
 
         this.username = username
         this.fullname = fullname
         this.uid = uid
         this.bio = bio
         this.image = image
+        this.degree = degree
+        this.programme = programme
+        this.college = college
+        this.phone = phone
 
     }
 
@@ -57,6 +65,21 @@ class User {
 
     fun setImage(image: String){
         this.image = image
+    }
+
+    fun getCollege():String{
+        return college
+    }
+    fun getProgramme():String{
+        return programme
+    }
+
+    fun getDegree():String{
+        return degree
+    }
+
+    fun getPhone():String{
+        return phone
     }
 
 

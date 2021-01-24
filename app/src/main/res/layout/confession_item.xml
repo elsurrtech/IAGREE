@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/black"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.borjabravo.readmoretextview.ReadMoreTextView
+        android:id="@+id/message_confession_item"
+        app:trimCollapsedText="show less"
+        app:trimExpandedText=" show more"
+        android:layout_marginStart="5dp"
+        app:trimLength="100"
+        app:trimMode="trimModeLength"
+        app:colorClickableText="#9c9c9c"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/ignore_confession"
+            android:layout_marginTop="5dp"
+            android:text="Ignore"
+            android:textAllCaps="false"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/bgColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/start_confession"
+            android:layout_toEndOf="@+id/ignore_confession"
+            android:text="Start Conversation"
+            android:textAllCaps="false"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

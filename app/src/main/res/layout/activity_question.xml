@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".questionare.QuestionActivity">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:id="@+id/btnBack_q_home"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:id="@+id/textView_question_activity"
+            android:layout_toEndOf="@+id/btnBack_q_home"
+            android:layout_marginStart="8dp"
+            android:text="Latest Questions"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_above="@+id/r2"
+        android:layout_below="@+id/r1"
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:id="@+id/r2"
+        android:elevation="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_btmnvgtn"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:backgroundTint="@color/white"
+            app:itemTextColor="@color/black"
+            app:itemIconSize="25dp"
+            app:itemIconTint="@color/black"
+            app:itemRippleColor="@color/black"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_btmnvgtn"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_nav"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

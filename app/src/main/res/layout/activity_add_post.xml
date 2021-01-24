@@ -51,6 +51,7 @@
                 android:backgroundTint="@color/white"
                 android:textColor="@color/white"
                 android:textColorHint="#dedede"
+                android:maxHeight="100dp"
                 android:layout_centerVertical="true"
                 android:hint="Add Description.."
                 android:layout_height="wrap_content"/>
@@ -58,11 +59,15 @@
         </RelativeLayout>
 
         <View
+            android:visibility="gone"
+
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
         <TextView
+            android:visibility="gone"
+
             android:text="Your Post is:"
             android:textColor="@color/white"
             android:layout_marginStart="10dp"
@@ -71,6 +76,7 @@
             android:layout_height="wrap_content"/>
 
       <RadioGroup
+          android:visibility="gone"
           android:id="@+id/radioGroup"
           android:orientation="horizontal"
           android:layout_width="wrap_content"
@@ -81,7 +87,6 @@
           <RadioButton
               android:id="@+id/personal"
               android:text="Personal"
-              android:checked="true"
               android:textColor="@color/white"
               android:layout_width="wrap_content"
               android:layout_margin="2dp"

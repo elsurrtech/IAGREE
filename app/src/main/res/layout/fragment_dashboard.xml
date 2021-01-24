@@ -100,10 +100,10 @@
                             <ImageView
                                 android:id="@+id/image_verified_dashboard"
                                 android:src="@drawable/ic_verified"
-                                android:layout_gravity="bottom"
-                                android:layout_marginStart="10dp"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"/>
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="2dp"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"/>
 
 
 
@@ -124,19 +124,52 @@
                             <TextView
                                 android:id="@+id/fullName_dashboard_frag"
                                 android:text="Deepesh Sengar"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="5dp"
                                 android:textColor="@color/white"
-                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
+
+
 
 
                         </LinearLayout>
 
                         <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginStart="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                            <com.borjabravo.readmoretextview.ReadMoreTextView
+                                android:id="@+id/details_fragment_dashboard"
+                                android:text="Details"
+                                app:trimCollapsedText=" show less"
+                                app:trimExpandedText="show more"
+                                app:trimLength="25"
+                                app:trimMode="trimModeLength"
+                                app:colorClickableText="#9c9c9c"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:textColor="@color/white"
+                                android:layout_width="match_parent"
+                                android:layout_marginEnd="20dp"
+                                android:layout_height="wrap_content"/>
+
+
+
+                    </LinearLayout>
+
+                        <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp">
+                            android:layout_height="wrap_content">
 
                             <ImageView
                                 android:layout_marginStart="8dp"
@@ -145,16 +178,20 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
-                            <TextView
+                            <com.borjabravo.readmoretextview.ReadMoreTextView
                                 android:id="@+id/bio_dashboard_frag"
                                 android:text="bio"
+                                app:trimCollapsedText="show less"
+                                app:trimExpandedText="show more"
+                                app:trimLength="50"
+                                app:trimMode="trimModeLength"
+                                app:colorClickableText="#9c9c9c"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
                                 android:textColor="@color/white"
                                 android:layout_width="match_parent"
                                 android:layout_marginEnd="20dp"
                                 android:layout_height="wrap_content"/>
-
 
                         </LinearLayout>
 

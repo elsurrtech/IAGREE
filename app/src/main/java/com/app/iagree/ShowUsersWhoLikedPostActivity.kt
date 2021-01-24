@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.iagree.adaptor.SearchUserItemAdaptor
 import com.app.iagree.model.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -56,6 +57,8 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
 
         val t = findViewById<TextView>(R.id.t)
         t.text = title
+
+
     }
 
     private fun getViews() {
@@ -215,4 +218,11 @@ class ShowUsersWhoLikedPostActivity : AppCompatActivity() {
     override fun onBackPressed() {
         finish()
     }
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
+
 }

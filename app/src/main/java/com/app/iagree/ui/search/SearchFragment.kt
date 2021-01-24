@@ -75,6 +75,7 @@ class SearchFragment : Fragment() {
         topPostsRecyclerView?.visibility = View.VISIBLE
 
 
+
         topPosts()
 
         //SearchView Edit text
@@ -96,7 +97,9 @@ class SearchFragment : Fragment() {
 
                     retrieveUsers()
 
+
                     searchUser(s.toString().toLowerCase())
+
                 }
             }
 
@@ -138,6 +141,32 @@ class SearchFragment : Fragment() {
     private fun searchUser(input:String){
         val query= FirebaseDatabase.getInstance().getReference().child("Users")
             .orderByChild("username").startAt(input).endAt(input+"\uf8ff")
+
+        query.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+
+                mUser?.clear()
+
+                for(snapshot in p0.children){
+                    val user = snapshot.getValue(User::class.java)
+                    if(user!=null){
+                        mUser?.add(user)
+                    }
+                }
+
+                userItemAdaptor?.notifyDataSetChanged()
+
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+    }
+
+    private fun searchByFullName(input:String){
+        val query= FirebaseDatabase.getInstance().getReference().child("Users")
+            .orderByChild("fullname").startAt(input).endAt(input+"\uf8ff")
 
         query.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {

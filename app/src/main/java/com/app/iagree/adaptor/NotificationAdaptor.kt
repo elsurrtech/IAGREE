@@ -67,7 +67,7 @@ class NotificationAdaptor(private val mContext: Context, mNotification:List<noti
 
             userInfo(holder.userImageNotification,holder.usernameNotification,notification.getuserID())
 
-            if (notification.isPost()){
+            if (notification.getpostID() != ""){
                 holder.postImageNotification.visibility = View.VISIBLE
                 getPostImage(holder.postImageNotification,notification.getpostID())
             }else{
@@ -113,7 +113,7 @@ class NotificationAdaptor(private val mContext: Context, mNotification:List<noti
 
                     if (p0.exists()){
                         val user = p0.getValue<User>(User::class.java)
-                        Picasso.get().load(user!!.getImage()).into(imageView)
+                        Picasso.get().load(user!!.getImage()).resize(200,200).onlyScaleDown().into(imageView)
                         username.text = user!!.getUsername()
 
                     }
@@ -134,7 +134,7 @@ class NotificationAdaptor(private val mContext: Context, mNotification:List<noti
                     if (p0.exists()){
                         val post = p0.getValue<Post>(Post::class.java)
 
-                        Picasso.get().load(post!!.getPostImage()).placeholder(R.drawable.ic_account_circle_black_24dp).into(imageView)
+                        Picasso.get().load(post!!.getPostImage()).resize(200,200).onlyScaleDown().placeholder(R.drawable.ic_account_circle_black_24dp).into(imageView)
 
                     }
                 }

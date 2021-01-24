@@ -6,14 +6,16 @@ class Post {
     private var postImage: String = ""
     private var publisher: String = ""
     private var description: String = ""
+    private var date:String = ""
 
     constructor()
     //contructor
-    constructor(postID: String, postImage: String, publisher: String, description: String) {
+    constructor(postID: String, postImage: String, publisher: String, description: String, date:String) {
         this.postID = postID
         this.postImage = postImage
         this.publisher = publisher
         this.description = description
+        this.date = date
     }
 
     //getters
@@ -31,6 +33,10 @@ class Post {
 
     fun getDescription():String{
         return description
+    }
+
+    fun getDate():String{
+        return date
     }
 
     //setters

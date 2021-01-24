@@ -81,6 +81,7 @@
                 android:layout_margin="20dp"
                 android:layout_alignParentBottom="true"
                 android:text="Follow"
+                android:id="@+id/btnFollow_leaderboard"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

@@ -294,6 +294,46 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:padding="5dp"
+            android:id="@+id/meetDeveloper"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/verification"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="About Developer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="#9c9c9c"
+                        android:text="Know more about developer of this application"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
@@ -301,7 +341,6 @@
             android:text="Log Out"
             android:layout_alignParentBottom="true"
             app:iconGravity="end"
-            android:layout_above="@+id/view"
             android:elevation="5dp"
             android:textAlignment="viewStart"
             app:icon="@drawable/ic_logout_new_black_24dp"
@@ -311,27 +350,6 @@
             android:layout_marginEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
-
-        <RelativeLayout
-            android:id="@+id/view"
-            android:background="@color/bgColor"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="25dp">
-
-            <TextView
-                android:id="@+id/quiqle"
-                android:text="A QuiQle Corp. Product"
-                android:textColor="@color/white"
-                android:layout_marginBottom="5dp"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-
-
 
 
     </RelativeLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    //login page
+    <string name="email">Эл. адрес</string>
+    <string name="password">пароль</string>
+    <string name="login">логин</string>
+    <string name="forgetPassword">Забыли пароль?</string>
+    <string name="or">или</string>
+    <string name="signUp">Зарегистрироваться</string>
+
+    //About Activity
+    <string name="about">около</string>
+    <string name="privacyPolicy">политика конфиденциальности</string>
+    <string name="termsandconditions">условия и положения</string>
+    <string name="acknowledgement">благодарности</string>
+
+    //Add Answer Activity
+    <string name="addAnswer">добавить ответ</string>
+    <string name="addQuestion">добавить вопрос</string>
+    <string name="details">детали</string>
+    <string name="addaphoto">добавить фото</string>
+    <string name="typeAnswer">Введите ответ здесь</string>
+    <string name="areyousure">Ты уверен?</string>
+    <string name="yes">да</string>
+    <string name="no">нет</string>
+    <string name="post">Почта</string>
+
+    //Add Post Activity
+    <string name="addDescription">Добавить описание</string>
+
+
+</resources>

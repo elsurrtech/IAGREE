@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".settings.AboutDeveloper">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:background="@color/bgColor"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="About Developer"
+            android:textSize="23sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/btnBack_developer"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="30dp"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:text="Deepesh Sengar"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="I am an Android Application Developer and one of the founders of QuiQle Corp. \nI started programming in my school days and became curious about use of programming possibilities in real life.
+            \nI made this social media application as my project and I want to share it with all of you as a QuiQLe Corp. Product.\nMy team will always be there if you need any help. From now on, QuiQle developers will take care for future updates and user experience reviews"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/linkedin"
+        android:text="LinkedIn: Deepesh Sengar"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

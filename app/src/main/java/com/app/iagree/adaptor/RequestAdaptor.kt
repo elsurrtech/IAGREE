@@ -90,6 +90,7 @@ class RequestAdaptor(private val mContext:Context, mRequest:MutableList<requests
                 .child("Follow").child(firebaseUser!!.uid)
                 .child("Requests").child(request.getrequestPublisher()).removeValue()
 
+
         }
 
         holder.textUsername.setOnClickListener {

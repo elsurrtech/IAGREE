@@ -28,7 +28,7 @@
             />
 
         <ImageView
-            android:id="@+id/btnBack"
+            android:id="@+id/btnBack_poll"
             android:layout_marginStart="5dp"
             android:src="@drawable/ic_arrow_back_black_24dp"
             android:layout_width="30dp"

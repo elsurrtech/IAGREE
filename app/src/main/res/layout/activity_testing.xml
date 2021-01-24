@@ -12,317 +12,39 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.jgabrielfreitas.core.BlurImageView
-                    android:id="@+id/blur_image"
-                    android:scaleType="centerCrop"
-                    android:background="@color/bgColor"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"/>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/c1"
-                    android:backgroundTint="@color/bgColor"
-                    android:layout_marginTop="180dp"
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:text="\@"
-                                android:textSize="18sp"
-                                android:layout_marginStart="10dp"
-                                android:textStyle="bold"
-                                android:layout_marginTop="5dp"
-                                android:textColor="@color/white"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                            <TextView
-                                android:id="@+id/username_search_profile_frag"
-                                android:text="username"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:layout_marginStart="2dp"
-                                android:layout_marginTop="5dp"
-                                android:textColor="@color/white"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp">
-
-                            <ImageView
-                                android:layout_marginStart="8dp"
-                                android:layout_gravity="center_vertical"
-                                android:src="@drawable/ic_person_black_24dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-
-                            <TextView
-                                android:id="@+id/fullName_search_profile_frag"
-                                android:text="Deepesh Sengar"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="5dp"
-                                android:textColor="@color/white"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp">
-
-                            <ImageView
-                                android:layout_marginStart="8dp"
-                                android:layout_gravity="center_vertical"
-                                android:src="@drawable/ic_library_books_black_24dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-
-                            <TextView
-                                android:id="@+id/bio_search_profile_frag"
-                                android:text="bio"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="5dp"
-                                android:textColor="@color/white"
-                                android:layout_width="match_parent"
-                                android:layout_marginEnd="20dp"
-                                android:layout_height="wrap_content"/>
-
-
-                        </LinearLayout>
-
-
-                        <View
-                            android:background="@color/white"
-                            android:layout_width="match_parent"
-                            android:layout_marginTop="5dp"
-                            android:layout_height="1dp"/>
-
-                        <RelativeLayout
-                            android:id="@+id/r2_1"
-                            android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:id="@+id/r2_1_1"
-                                android:weightSum="3"
-                                android:layout_centerVertical="true"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                >
-
-                                <LinearLayout
-                                    android:layout_weight="1"
-                                    android:id="@+id/r2_1_1_1"
-                                    android:orientation="vertical"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content">
-
-                                    <TextView
-                                        android:id="@+id/total_posts_search_profile"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="0"
-                                        android:layout_gravity="center_horizontal"
-                                        android:textSize="18sp"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white"
-                                        />
-
-                                    <TextView
-                                        android:layout_gravity="center_horizontal"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Posts"
-                                        android:textSize="15sp"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white"
-                                        />
-
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_weight="1"
-                                    android:layout_toEndOf="@+id/r2_1_1_1"
-                                    android:id="@+id/r2_1_1_2"
-
-                                    android:orientation="vertical"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content">
-
-                                    <TextView
-                                        android:id="@+id/total_followers_search_profile_frag"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="0"
-                                        android:layout_gravity="center_horizontal"
-                                        android:textSize="18sp"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white"
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/show_followers"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Followers"
-                                        android:textSize="15sp"
-                                        android:layout_gravity="center_horizontal"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white"
-                                        />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_weight="1"
-                                    android:id="@+id/r2_1_1_3"
-                                    android:layout_toEndOf="@+id/r2_1_1_2"
-                                    android:orientation="vertical"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content">
-
-                                    <TextView
-                                        android:id="@+id/total_following_search_profile_frag"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="0"
-                                        android:layout_gravity="center_horizontal"
-                                        android:textSize="18sp"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white"
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/show_following"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Following"
-                                        android:textSize="15sp"
-                                        android:textAllCaps="false"
-                                        android:layout_gravity="center_horizontal"
-                                        android:textColor="@color/white"
-                                        />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-
-                        <Button
-                            android:id="@+id/follow_unFollow_search_profile_frag"
-                            android:text="Follow"
-                            android:layout_margin="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-
-                    </LinearLayout>
-
-
-                </androidx.cardview.widget.CardView>
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/image_search_profile_frag"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="@color/white"
-                    android:layout_width="80dp"
-                    android:elevation="5dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginTop="140dp"
-                    android:layout_height="80dp"/>
-
-
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:id="@+id/r3"
-                android:orientation="vertical"
-                android:background="@color/bgColor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_weight="2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <RelativeLayout
-                        android:id="@+id/rPost"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/show_posts"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/ic_grain_white_24dp"
-                            android:layout_width="30dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_height="30dp"/>
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <View
-                    android:background="@color/white"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-
-            </LinearLayout>
-
-
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/testing_text"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:text="asas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_uploads_fragment_search_profile"
+                android:id="@+id/recyclerView_testing_activity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
+            <ProgressBar
+                android:id="@+id/progressbar_testing_activity"
+                android:indeterminateTint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/loadMore"
+                android:text="Load More"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
 
         </LinearLayout>
 
     </ScrollView>
-
-
 
 
 </RelativeLayout>

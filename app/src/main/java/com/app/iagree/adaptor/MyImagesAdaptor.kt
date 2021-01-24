@@ -43,7 +43,7 @@ class MyImagesAdaptor (private val mContext:Context, mPost:List<Post>)
     override fun onBindViewHolder(holder: MyImagesAdaptor.ViewHolder, position: Int) {
 
         val post: Post = mPost!![position]
-        Picasso.get().load(post.getPostImage()).into(holder.postImage, object :com.squareup.picasso.Callback{
+        Picasso.get().load(post.getPostImage()).resize(300,300).onlyScaleDown().into(holder.postImage, object :com.squareup.picasso.Callback{
             override fun onSuccess() {
                 holder.loaderRelative.visibility = View.GONE
             }

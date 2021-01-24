@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage_q_post"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/username_q_post"
+            android:text="Name"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_toEndOf="@+id/profileImage_q_post"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_height="wrap_content"/>
+
+        <com.borjabravo.readmoretextview.ReadMoreTextView
+            android:id="@+id/bio_q_post"
+            android:textColor="#9c9c9c"
+            android:layout_below="@+id/username_q_post"
+            android:layout_toEndOf="@+id/profileImage_q_post"
+            android:text="Bio Details"
+            app:trimCollapsedText=" Show Less"
+            app:trimExpandedText=" Show More"
+            android:textSize="13sp"
+            app:trimLength="54"
+            app:trimMode="trimModeLength"
+            app:colorClickableText="#9c9c9c"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/date_q_post"
+            android:textColor="#9c9c9c"
+            android:layout_alignParentEnd="true"
+            android:text="date"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/question_q_post"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.borjabravo.readmoretextview.ReadMoreTextView
+            android:id="@+id/details_q_post"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Details"
+            app:trimCollapsedText=" Read Less"
+            app:trimExpandedText=" Read More"
+            app:trimLength="54"
+            app:trimMode="trimModeLength"
+            app:colorClickableText="#9c9c9c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <xyz.hanks.library.bang.SmallBangView
+                android:id="@+id/like_heart_q_post"
+                android:layout_width="30dp"
+                android:layout_gravity="center_horizontal"
+                app:circle_start_color="@color/white"
+                app:circle_end_color="@color/white"
+                app:dots_primary_color="@color/red"
+                app:dots_secondary_color="@color/red"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/image_like_post_layout"
+                    android:src="@drawable/heart_selector"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </xyz.hanks.library.bang.SmallBangView>
+
+            <TextView
+                android:id="@+id/likes_q_post"
+                android:textColor="#9c9c9c"
+                android:text="Like"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/answers_question_post"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/comment_icon_q_post"
+                android:src="@drawable/ic_answer"
+                android:layout_width="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="30dp"/>
+
+            <TextView
+                android:id="@+id/comments_q_post"
+                android:textColor="#9c9c9c"
+                android:text="Answers"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <xyz.hanks.library.bang.SmallBangView
+                android:id="@+id/save_smallBang_q_post"
+                android:layout_width="30dp"
+                app:circle_end_color="@color/white"
+                android:layout_gravity="center_horizontal"
+                app:circle_start_color="@color/white"
+                app:dots_primary_color="@color/white"
+                app:dots_secondary_color="@color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:layout_marginEnd="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/image_save_post_layout"
+                    android:src="@drawable/save_selector"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </xyz.hanks.library.bang.SmallBangView>
+
+            <TextView
+
+                android:textColor="#9c9c9c"
+                android:text="Save Question"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+</LinearLayout>

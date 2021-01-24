@@ -3,6 +3,8 @@ package com.app.iagree
 import android.app.Notification
 import android.content.Intent
 import android.os.Bundle
+import android.renderscript.Sampler
+import android.view.InflateException
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,17 +19,23 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.app.iagree.loginsignup.LoginActivity
 import com.app.iagree.ui.add.AddFragment
 import com.app.iagree.ui.dashboard.DashboardFragment
 import com.app.iagree.ui.home.HomeFragment
 import com.app.iagree.ui.homepages.HomeFragmentContainer
 import com.app.iagree.ui.notifications.NotificationFragmentContainer
 import com.app.iagree.ui.search.SearchFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.RuntimeException
 
 class MainActivity : AppCompatActivity() {
 
-    var navController: NavController? = null
 
     private var fragment1 = HomeFragmentContainer()
     private var fragment2 = DashboardFragment()
@@ -42,9 +50,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        try {
+            setContentView(R.layout.activity_main)
+        }catch (ex: InflateException){
+            val i = intent
+            finish()
+            startActivity(i)
+            ex.printStackTrace()
+        }catch (ex : RuntimeException){
+            val i = intent
+            finish()
+            startActivity(i)
+            ex.printStackTrace()
+        }
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
+
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
 //        fm.beginTransaction().add(R.id.nav_host_fragment,fragment3,"3").hide(fragment3).commit()
@@ -57,6 +79,8 @@ class MainActivity : AppCompatActivity() {
         //navView.setupWithNavController(navController!!)
         navView.selectedItemId=R.id.navigation_home
 
+
+
     }
 
     private val mOnNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
@@ -66,11 +90,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.navigation_home-> {
 
 
-                        /* bro agar m active use krta hu tab scene ye hai ki same element p click kiya jai toh home khul rha hai kyuki active
-                        hide ho ja ra hai isliye mne active hta diya and on create m hamesha main load hoga selecteditem = navigation home se
-                        baki uper ka code kisi kaam ka nhi isliye comment kr diya
 
-                        */
 
 
                         fm.beginTransaction().replace(R.id.nav_host_fragment,fragment1).commit()
@@ -113,13 +133,55 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController!!.navigateUp()
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+    override fun onStart() {
+        super.onStart()
+        val ref = FirebaseDatabase.getInstance().reference.child("Users")
+            .child(FirebaseAuth.getInstance().currentUser!!.uid)
+        ref.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.child("college").value!!.equals("")){
+                    startActivity(Intent(this@MainActivity,DetailsActivity::class.java))
+                }
+
+                val FollowRef = FirebaseDatabase.getInstance().reference.child("Follow")
+                    .child(FirebaseAuth.getInstance().currentUser!!.uid).child("Following")
+                FollowRef.addValueEventListener(object :ValueEventListener{
+                    override fun onDataChange(goti: DataSnapshot) {
+                        if (goti.exists()){
+                            if (p0.childrenCount <= 3 && p0.child("college").value!!.equals("")){
+                                startActivity(Intent(this@MainActivity,DetailsActivity::class.java))
+                            }else if (p0.childrenCount <= 3 && !p0.child("college").value!!.equals("")){
+                                startActivity(Intent(this@MainActivity,SuggestionsActivity::class.java))
+                            }
+                        }
+                        else if (p0.child("college").value!!.equals("")){
+                            startActivity(Intent(this@MainActivity,DetailsActivity::class.java))
+                        }
+                        else{
+                            startActivity(Intent(this@MainActivity,SuggestionsActivity::class.java))
+                        }
+                    }
+
+                    override fun onCancelled(p0: DatabaseError) {
+
+                    }
+                })
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+
 
     }
+
+
 
 }

@@ -13,8 +13,8 @@ class HomePagesAdaptor(fm:FragmentManager): FragmentPagerAdapter(fm) {
             when(position){
                 0-> {return HomeFragment()}
                 1-> {return PersonalFragment()}
-                2-> {return MemesFragment()}
-                3-> {return InfoFragment()}
+                //2-> {return MemesFragment()}
+                //3-> {return InfoFragment()}
 
                 else -> {return HomeFragment()}
             }
@@ -23,16 +23,16 @@ class HomePagesAdaptor(fm:FragmentManager): FragmentPagerAdapter(fm) {
     override fun getPageTitle(position: Int): CharSequence? {
         when(position){
 
-            0-> {return "All"}
-            1-> {return "People"}
-            2-> {return "Memes"}
-            3-> {return "Info"}
+            0-> {return "Posts"}
+            1-> {return "Events"}
+            //2-> {return "Jobs"}
+            //3-> {return "Ads"}
 
         }
         return super.getPageTitle(position)
     }
 
     override fun getCount(): Int {
-        return 4
+        return 2 //do it 4
     }
 }

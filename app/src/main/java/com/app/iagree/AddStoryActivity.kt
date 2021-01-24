@@ -6,6 +6,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
@@ -19,6 +21,7 @@ import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_add_post.*
+import kotlinx.android.synthetic.main.activity_add_story.*
 
 class AddStoryActivity : AppCompatActivity() {
 
@@ -32,11 +35,22 @@ class AddStoryActivity : AppCompatActivity() {
 
         storageStoryPicRef = FirebaseStorage.getInstance().reference.child("Story Pictures")
 
-
-
         CropImage.activity()
-            .setAspectRatio(1,2)
             .start(this)
+
+        send_story.setOnClickListener {
+            uploadStory(description_add_story)
+        }
+
+        choose_another.setOnClickListener {
+            CropImage.activity()
+                .start(this)
+        }
+
+        btnBack_add_story.setOnClickListener {
+            onBackPressed()
+        }
+
 
     }
 
@@ -46,14 +60,14 @@ class AddStoryActivity : AppCompatActivity() {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data!=null){
             val result = CropImage.getActivityResult(data)
             imageUri = result.uri
+            image_add_story.setImageURI(imageUri)
 
-            uploadStory()
         }else{
             onBackPressed()
         }
     }
 
-    private fun uploadStory() {
+    private fun uploadStory(x:EditText) {
         when{
             imageUri == null -> Toast.makeText(this,"Please Select Image", Toast.LENGTH_SHORT).show()
 
@@ -96,6 +110,7 @@ class AddStoryActivity : AppCompatActivity() {
                         storyMap["timeend"] = timeEnd
                         storyMap["storyid"] = storyID
                         storyMap["imageurl"] = myUrl
+                        storyMap["desc"] = x.text.toString()
 
                         ref.child(storyID).updateChildren(storyMap)
 
@@ -114,6 +129,13 @@ class AddStoryActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
+
 
 
 }

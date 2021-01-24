@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ShowEventActivity">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:padding="10dp"
+        android:background="@color/bgColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/image_save_show_event"
+            android:src="@drawable/save_selector"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_above="@+id/r2_show_event"
+        android:layout_below="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_show_event"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_show_event"
+                    android:background="@color/shimmer"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/title_show_event"
+                        android:textStyle="bold"
+                        android:textColor="@color/shimmer"
+                        android:text=""
+                        android:textSize="17sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:id="@+id/view_1_show_event"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
+                    <TextView
+                        android:id="@+id/date_show_event"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/shimmer"
+                        android:text=""
+                        android:textSize="15sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/time_show_event"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/shimmer"
+                        android:text=""
+                        android:textSize="15sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/address_show_event"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/shimmer"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:id="@+id/view_2_show_event"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
+                    <TextView
+                        android:id="@+id/description_show_event"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/shimmer"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/image_show_event"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/relative_show_event"
+                        android:visibility="invisible"
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profilePhoto_show_event"
+                            android:background="@color/shimmer"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+
+                        <TextView
+                            android:id="@+id/name_show_event"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/profilePhoto_show_event"
+                            android:layout_centerVertical="true"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/t2"
+                            android:layout_toEndOf="@+id/name_show_event"
+                            android:textColor="@color/white"
+                            android:layout_centerVertical="true"
+                            android:text="  •  "
+                            android:textSize="20sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/followers_show_event"
+                            android:layout_toEndOf="@+id/t2"
+                            android:textColor="@color/white"
+                            android:layout_centerVertical="true"
+                            android:text=""
+                            android:textSize="15sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:background="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
+                    <TextView
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:textColor="@color/shimmer"
+                        android:text="Comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RelativeLayout
+                        android:visibility="invisible"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/r3_show_event"
+                        android:background="@color/shimmer"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:background="@color/shimmer"
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/profile_image_comment_show_event"
+                            android:layout_width="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_height="30dp"/>
+
+                        <EditText
+                            android:id="@+id/et_activity_comment"
+                            android:hint="add comment.."
+                            android:layout_toEndOf="@+id/profile_image_comment_show_event"
+                            android:layout_marginStart="10dp"
+                            android:textColor="@color/white"
+                            android:textColorHint="#9c9c9c"
+                            android:maxHeight="100dp"
+                            android:backgroundTint="#9c9c9c"
+                            android:layout_toStartOf="@+id/send_image_comment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <ImageView
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:id="@+id/send_image_comment"
+                            android:layout_width="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_send_shimmer"
+                            android:layout_height="30dp"/>
+
+
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/linear_nopost_show_event"
+                        android:layout_margin="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/ic_nopost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/shimmer"
+                            android:textSize="15sp"
+                            android:text="No Comments Yet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:visibility="invisible"
+        android:id="@+id/r2_show_event"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bgColor"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/entryFees_show_event"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/t1"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@+id/entryFees_show_event"
+            android:layout_centerVertical="true"
+            android:text="   •   "
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/peopleGoing_show_event"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@+id/t1"
+            android:layout_centerVertical="true"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_marginEnd="20dp"
+            android:text="Attend"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

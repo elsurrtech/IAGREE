@@ -64,6 +64,8 @@ class CommentsActivity : AppCompatActivity() {
         keyList = ArrayList()
         commentsAdaptor = CommentsAdaptor(postID!!,this,keyList,commentList)
         recyclerView.adapter = commentsAdaptor
+
+
     }
 
     private fun addComment() {
@@ -142,4 +144,11 @@ class CommentsActivity : AppCompatActivity() {
         notiref.push().setValue(notiMap)
 
     }
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
+
 }

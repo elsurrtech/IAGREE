@@ -54,12 +54,17 @@ class EditProfileActivity : AppCompatActivity() {
     var connectivity: ConnectivityManager? = null
     var info : NetworkInfo? = null
 
+
     var check = 2
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
+
+        btnBack_editProfile.setOnClickListener {
+            onBackPressed()
+        }
 
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
         storageProfilePicRef = FirebaseStorage.getInstance().reference.child("Profile Pictures")
@@ -69,7 +74,6 @@ class EditProfileActivity : AppCompatActivity() {
         text_change_image_edit_profile.setOnClickListener {
             checker = "clicked"
             CropImage.activity()
-                .setAspectRatio(1,1)
                 .start(this)
         }
 
@@ -103,6 +107,8 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
 
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -127,8 +133,9 @@ class EditProfileActivity : AppCompatActivity() {
             else->{
 
                 val progressDialog = ProgressDialog(this)
-                progressDialog.setTitle("Account Settings")
+                progressDialog.setTitle("Updating Profile")
                 progressDialog.setMessage("Please Wait")
+                progressDialog.setCancelable(false)
                 progressDialog.show()
 
                 val fileRef = storageProfilePicRef!!.child(firebaseUser!!.uid + ".jpg")
@@ -192,6 +199,7 @@ class EditProfileActivity : AppCompatActivity() {
                     bio_edit_profile.setText(user!!.getBio())
 
                 }
+
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -217,14 +225,13 @@ class EditProfileActivity : AppCompatActivity() {
             userMap["fullname"] = fullName_edit_profile.text.toString()
             userMap["bio"] = bio_edit_profile.text.toString()
 
-            usersRef.child(firebaseUser.uid).updateChildren(userMap)
+            usersRef.child(firebaseUser.uid).updateChildren(userMap).addOnCompleteListener {
+                onBackPressed()
+            }
 
             Toast.makeText(this,"Profile Updated",Toast.LENGTH_LONG).show()
 
-            val i  = Intent(this,MainActivity::class.java)
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(i)
-            finish()
+
         }
 
 
@@ -296,7 +303,6 @@ class EditProfileActivity : AppCompatActivity() {
                 }
 
 
-
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -304,4 +310,11 @@ class EditProfileActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
+
 }

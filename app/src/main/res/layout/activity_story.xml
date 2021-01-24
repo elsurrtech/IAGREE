@@ -27,7 +27,6 @@
         <ImageView
             android:id="@+id/image_story"
             android:background="@color/bgColor"
-            android:scaleType="centerCrop"
             android:contentDescription="@null"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -117,7 +116,7 @@
         <TextView
             android:id="@+id/seen_number"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
@@ -141,13 +140,43 @@
         <TextView
             android:id="@+id/story_delete"
             android:text="Delete"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <RelativeLayout
+        android:padding="30dp"
+        android:background="#20000000"
+        android:elevation="5dp"
+        android:id="@+id/relativelayout_story"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.borjabravo.readmoretextview.ReadMoreTextView
+            android:id="@+id/description_story_activity"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="description"
+            android:layout_margin="10dp"
+            app:trimCollapsedText=" show less"
+            app:trimExpandedText="show more"
+            app:trimLength="50"
+            app:trimMode="trimModeLength"
+            app:colorClickableText="#9c9c9c"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:layout_marginStart="5dp"
+            />
+
+
+    </RelativeLayout>
 
 
 

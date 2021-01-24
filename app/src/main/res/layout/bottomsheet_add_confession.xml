@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:text="Send a Confession"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textColor="#9c9c9c"
+        android:layout_gravity="center_horizontal"
+        android:text="Your Profile will be completely Anonymous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:background="@drawable/background_btmsheet_et"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <EditText
+            android:id="@+id/confessionMessage"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            android:hint="  Write your message here"
+            android:textColorHint="#9c9c9c"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/linear_confession"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:text="Are you sure?"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:padding="5dp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_No_Confession"
+                android:text="No"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_Yes_Confession"
+                android:text="Yes"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/send_btmConfession"
+        android:layout_gravity="center_horizontal"
+        android:text="Send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

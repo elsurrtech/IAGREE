@@ -52,6 +52,8 @@ class DashboardFragment : Fragment() {
     var postListSave : List<Post>? = null
     var mySavesImage: List<String>? = null
 
+    var totalPosts = ""
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -68,11 +70,7 @@ class DashboardFragment : Fragment() {
             startActivity(i)
         }
 
-        val btnSettings = root.findViewById<ImageView>(R.id.btnSetting)
-        btnSettings.setOnClickListener {
-            val i = Intent(context,SettingsActivity::class.java)
-            startActivity(i)
-        }
+
 
         //
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
@@ -152,6 +150,13 @@ class DashboardFragment : Fragment() {
         getTotalNumberOfPosts()
         mySaves()
         checkVerifiedAccount(root.image_verified_dashboard)
+
+        val btnSettings = root.findViewById<ImageView>(R.id.btnSetting)
+        btnSettings.setOnClickListener {
+            val i = Intent(context,SettingsActivity::class.java)
+            i.putExtra("totalPosts",totalPosts)
+            startActivity(i)
+        }
 
         return root
     }
@@ -252,6 +257,8 @@ class DashboardFragment : Fragment() {
                 if (p0.exists()){
                     view?.total_followers?.text = p0.childrenCount.toString()
 
+                }else{
+                    view?.total_followers?.text ="0"
                 }
 
             }
@@ -275,6 +282,8 @@ class DashboardFragment : Fragment() {
                 if (p0.exists()){
                     view?.total_following?.text = p0.childrenCount.toString()
 
+                }else{
+                    view?.total_following?.text = "0"
                 }
 
             }
@@ -322,6 +331,7 @@ class DashboardFragment : Fragment() {
                     view?.username_dashboard_frag?.text = user!!.getUsername()
                     view?.fullName_dashboard_frag?.text = user!!.getFullname()
                     view?.bio_dashboard_frag?.text = user!!.getBio()
+                    view?.details_fragment_dashboard?.text = user.getCollege() + ", " + user.getDegree() + " "+ user.getProgramme() + " "
 
                 }
             }
@@ -345,9 +355,12 @@ class DashboardFragment : Fragment() {
                             postCounter++
                         }
                     }
-                    total_posts.text = postCounter.toString()
+                    total_posts?.text = postCounter.toString()
+                    totalPosts = total_posts.text.toString()
+
                 }else{
-                    total_posts.text = "0"
+                    total_posts?.text = "0"
+                    totalPosts = "0"
                 }
             }
 

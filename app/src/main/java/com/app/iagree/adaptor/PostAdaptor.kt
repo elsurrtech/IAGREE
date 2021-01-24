@@ -41,7 +41,7 @@ class PostAdaptor
 
     inner class ViewHolder(@NonNull itemView: View): RecyclerView.ViewHolder(itemView){
         var profileImg: CircleImageView = itemView.findViewById(R.id.image_publisher_post_layout)
-        var postImage: ImageView = itemView.findViewById(R.id.post_image_post_layout)
+        var postImage:ImageView = itemView.findViewById(R.id.post_image_post_layout)
         var likeButton: SmallBangView = itemView.findViewById(R.id.like_heart)
         var commentButton: ImageView = itemView.findViewById(R.id.image_comment_post_layout)
         var saveButton: SmallBangView = itemView.findViewById(R.id.save_smallBang)
@@ -55,6 +55,7 @@ class PostAdaptor
         var loader_layout: LinearLayout = itemView.findViewById(R.id.loader_post_layout)
         var t2 : TextView = itemView.findViewById(R.id.t2_postLayout)
         val icon_verified = itemView.findViewById<ImageView>(R.id.image_verified_post)
+        val date = itemView.findViewById<TextView>(R.id.text_date_post_layout)
 
     }
 
@@ -65,8 +66,7 @@ class PostAdaptor
 
     override fun getItemCount(): Int {
 
-        return mPost.size
-
+            return mPost.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -81,6 +81,7 @@ class PostAdaptor
         checkVerifiedAccount(holder.icon_verified,post.getPublisher())
 
 
+
         //loader
         val loader = LazyLoader(mContext,15,50, ContextCompat.getColor(mContext, R.color.white),
             ContextCompat.getColor(mContext, R.color.white),
@@ -90,6 +91,7 @@ class PostAdaptor
             secondDelayDuration = 200
             interpolator = DecelerateInterpolator()
         }
+        holder.loader_layout.visibility = View.VISIBLE
 
         holder.loader_layout.addView(loader)
         holder.postLayout.visibility = View.GONE
@@ -99,10 +101,11 @@ class PostAdaptor
             override fun onSuccess() {
                 holder.postLayout.visibility =View.VISIBLE
                 holder.loader_layout.removeView(loader)
+                holder.loader_layout.elevation = 0f
             }
 
             override fun onError(e: Exception?) {
-
+                holder.loader_layout.removeView(loader)
             }
         })
 
@@ -115,6 +118,7 @@ class PostAdaptor
         }
 
         //
+        holder.date.text = post.getDate()
        
 
         holder.userName.setOnClickListener {
@@ -365,7 +369,7 @@ class PostAdaptor
                     imageView.isSelected = true
                     imageView.tag = "saved"
                 }else{
-
+                    imageView.isSelected = false
                     imageView.tag = "save"
                 }
             }

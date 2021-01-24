@@ -3,11 +3,13 @@ package com.app.iagree
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -17,13 +19,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.iagree.adaptor.MyImagesAdaptor
 import com.app.iagree.model.Post
 import com.app.iagree.model.User
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.bottomsheet_add_confession.view.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 import kotlinx.android.synthetic.main.fragment_search_profile.*
@@ -31,6 +32,7 @@ import kotlinx.android.synthetic.main.fragment_search_profile.view.*
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 /**
  * A simple [Fragment] subclass.
@@ -62,6 +64,8 @@ class SearchProfileFragment : Fragment() {
         if (pref!=null){
             profileID = pref.getString("profileID","profileID").toString()
         }
+
+        checkVerifiedAccount(view.image_verified_search_profile,profileID)
 
         val btnFollowUnfollow = view.findViewById<Button>(R.id.follow_unFollow_search_profile_frag)
 
@@ -129,6 +133,65 @@ class SearchProfileFragment : Fragment() {
 
             }
         }
+
+        //ConfessionBottomSheet
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        val v = layoutInflater.inflate(R.layout.bottomsheet_add_confession,null)
+        bottomSheetDialog.setContentView(v)
+        v.linear_confession?.visibility = View.GONE
+
+        view.btnConfession.setOnClickListener {
+            bottomSheetDialog.show()
+        }
+
+        v.send_btmConfession?.setOnClickListener {
+            when{
+                TextUtils.isEmpty(v.confessionMessage.text)->Toast.makeText(context,"Please Enter a Message",Toast.LENGTH_SHORT).show()
+                else->{
+                    v.linear_confession?.visibility = View.VISIBLE
+                    v.send_btmConfession?.visibility=View.GONE
+                }
+            }
+        }
+
+
+
+        v.btn_No_Confession?.setOnClickListener {
+            v.linear_confession?.visibility = View.GONE
+            v.send_btmConfession?.visibility=View.VISIBLE
+        }
+
+        v.btn_Yes_Confession?.setOnClickListener {
+            when{
+                TextUtils.isEmpty(v.confessionMessage.text)->Toast.makeText(context,"Please Enter a message",Toast.LENGTH_SHORT).show()
+                else->{
+                    val confessionRef: DatabaseReference = FirebaseDatabase.getInstance().reference
+                        .child("Follow").child(profileID)
+                        .child("ConfessionRequests")
+                    val key = confessionRef.push().key
+
+                    val confessionMap = HashMap<String,Any?>()
+                    confessionMap["key"] = key!!
+                    confessionMap["publisher"]= firebaseUser!!.uid
+                    confessionMap["message"] = v.confessionMessage.text.toString()
+
+
+                    confessionRef.child(key).setValue(confessionMap).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            v.confessionMessage?.text?.clear()
+                            Toast.makeText(context,"Message Sent! Please wait for Reply",Toast.LENGTH_LONG).show()
+                            bottomSheetDialog.dismiss()
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+
+
+
 
         view.show_followers_search.setOnClickListener {
             val i = Intent(context,ShowUsersWhoLikedPostActivity::class.java)
@@ -406,6 +469,23 @@ class SearchProfileFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
+    }
+
+    private fun checkVerifiedAccount(image: ImageView,profileID:String){
+        val ref = FirebaseDatabase.getInstance().reference.child("verified").child(profileID)
+        ref.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()){
+                    image?.visibility = View.VISIBLE
+                }else{
+                    image?.visibility = View.GONE
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
     }
 
 }

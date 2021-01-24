@@ -31,7 +31,6 @@
     <ImageView
         android:id="@+id/post_image"
         android:background="@color/bgColor"
-        android:scaleType="centerCrop"
         android:layout_width="120dp"
         android:layout_height="120dp"/>
 

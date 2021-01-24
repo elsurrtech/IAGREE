@@ -7,14 +7,16 @@ class Story {
     private var timeend: Long = 0
     private var storyid: String = ""
     private var userid: String = ""
+    private var desc: String = ""
 
     constructor()
-    constructor(imageurl: String, timestart: Long, timeend: Long, storyid: String, userid: String) {
+    constructor(imageurl: String, timestart: Long, timeend: Long, storyid: String, userid: String,desc:String) {
         this.imageurl = imageurl
         this.timestart = timestart
         this.timeend = timeend
         this.storyid = storyid
         this.userid = userid
+        this.desc = desc
     }
 
 
@@ -39,6 +41,10 @@ class Story {
         return userid
     }
 
+    fun getDesc():String{
+        return desc
+    }
+
     //setters
     fun setImageUrl(imageurl: String){
         this.imageurl = imageurl
@@ -58,6 +64,10 @@ class Story {
 
     fun setUserID(userid: String){
         this.userid = userid
+    }
+
+    fun setDesc(desc: String){
+        this.desc = desc
     }
 
 }

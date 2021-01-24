@@ -1,5 +1,6 @@
 package com.app.iagree
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.whenCreated
 import com.agrawalsuneet.dotsloader.loaders.LazyLoader
@@ -23,6 +25,8 @@ import com.squareup.picasso.Picasso
 import jp.shts.android.storiesprogressview.StoriesProgressView
 import kotlinx.android.synthetic.main.activity_story.*
 import java.lang.Exception
+import java.lang.IndexOutOfBoundsException
+import java.lang.NullPointerException
 
 class StoryActivity : AppCompatActivity() {
 
@@ -34,8 +38,11 @@ class StoryActivity : AppCompatActivity() {
 
     var imageList: List<String>? = null
     var storyIdList: List<String>? = null
+    var descList: List<String>? = null
 
     var storyProgressView: StoriesProgressView? = null
+
+
 
     private val onTouchListener = View.OnTouchListener { v, event ->
         when(event.action){
@@ -60,6 +67,8 @@ class StoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_story)
+
+
 
         currentUserID =FirebaseAuth.getInstance().currentUser!!.uid
         userid = intent.getStringExtra("userid")!!
@@ -98,18 +107,38 @@ class StoryActivity : AppCompatActivity() {
         }
 
         story_delete.setOnClickListener {
-            val ref  = FirebaseDatabase.getInstance().reference.child("Story")
-                .child(userid!!).child(storyIdList!![counter])
+            storyProgressView!!.pause()
 
-            ref.removeValue().addOnCompleteListener { task->
-                if (task.isSuccessful){
-                    val i = Intent(this,MainActivity::class.java)
-                    startActivity(i)
-                    Toast.makeText(this,"Story Deleted",Toast.LENGTH_SHORT).show()
+            val mAlertDialog = AlertDialog.Builder(this)
+            mAlertDialog.setTitle("Delete Story")
+            mAlertDialog.setMessage("Are you sure you want to delete this story?")
+            mAlertDialog.setCancelable(false)
+            mAlertDialog.setPositiveButton("Yes"){_,_->
+                if (counter == 0){
+                    onBackPressed()
+                }
+                onBackPressed()
+                val ref  = FirebaseDatabase.getInstance().reference.child("Story")
+                    .child(userid).child(storyIdList!![counter])
+
+                ref.removeValue().addOnCompleteListener { task->
+                    if (task.isSuccessful){
+                        Toast.makeText(this,"Story Deleted",Toast.LENGTH_SHORT).show()
+                    }
+
                 }
 
             }
+            mAlertDialog.setNegativeButton("No"){_,_->
+                storyProgressView!!.resume()
+            }
+
+            val alertDialog = mAlertDialog.create()
+            alertDialog.show()
+
+
         }
+
 
     }
 
@@ -155,6 +184,7 @@ class StoryActivity : AppCompatActivity() {
     private fun getStories(userid: String){
         imageList = ArrayList()
         storyIdList = ArrayList()
+        descList = ArrayList()
 
         val loader = LazyLoader(this,15,50, ContextCompat.getColor(this, R.color.white),
             ContextCompat.getColor(this, R.color.white),
@@ -172,8 +202,9 @@ class StoryActivity : AppCompatActivity() {
         ref.addValueEventListener(object : ValueEventListener, StoriesProgressView.StoriesListener {
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
-                    (imageList as ArrayList<String>).clear()
-                    (storyIdList as ArrayList<String>).clear()
+                    (imageList as ArrayList<String>)!!.clear()
+                    (storyIdList as ArrayList<String>)!!.clear()
+                    (descList as ArrayList<String>)!!.clear()
 
                     for (snapshot in p0.children){
                         val story: Story?= snapshot.getValue<Story>(Story::class.java)
@@ -182,33 +213,47 @@ class StoryActivity : AppCompatActivity() {
                         if(timeCurrent>story!!.getTimeStart() && timeCurrent<story.getTimeEnd()){
                             (imageList as ArrayList<String>).add(story.getImageUrl())
                             (storyIdList as ArrayList<String>).add(story.getStoryID())
+                            (descList as ArrayList<String>).add(story.getDesc())
                         }
                     }
+
+
 
                     storyProgressView!!.setStoriesCount((imageList as ArrayList<String>).size)
                     storyProgressView!!.setStoryDuration(5000L)
                     storyProgressView!!.setStoriesListener(this)
-                    image_container.visibility = View.GONE
+                    image_container?.visibility = View.GONE
+                    relativelayout_story?.visibility = View.GONE
 
-                    Picasso.get().load(imageList!!.get(counter)).into(image_story, object : com.squareup.picasso.Callback{
+                    try{
+                        description_story_activity?.text = descList!![counter]
+                    }catch (ex : NullPointerException){
+                        onBackPressed()
+                    }
+
+
+                    Picasso.get().load(imageList!![counter!!]).into(image_story, object : com.squareup.picasso.Callback{
                         override fun onSuccess() {
-                            image_container.visibility = View.VISIBLE
-                            loader_container.removeView(loader)
-                            storyProgressView!!.startStories(counter!!)
+                            try {
+                                image_container?.visibility = View.VISIBLE
+                                loader_container?.removeView(loader)
+                                storyProgressView!!.startStories(counter!!)
+                                relativelayout_story?.visibility = View.VISIBLE
+                            }catch (e:IndexOutOfBoundsException){
+                                e.printStackTrace()
+                                onBackPressed()
+                            }
+
                         }
 
                         override fun onError(e: Exception?) {
-
+                            onBackPressed()
                         }
                     })
 
 
-                    addViewToStory(storyIdList!!.get(counter))
-                    seenNumber(storyIdList!!.get(counter))
-                }
-                else{
-                    val i = Intent(this@StoryActivity,MainActivity::class.java)
-                    startActivity(i)
+                    addViewToStory(storyIdList!![counter])
+                    seenNumber(storyIdList!![counter])
                 }
             }
 
@@ -223,30 +268,44 @@ class StoryActivity : AppCompatActivity() {
             override fun onPrev() {
                 if (counter-1<0) return
                 Picasso.get().load(imageList!![--counter]).into(image_story)
+                description_story_activity?.text = descList!![counter]
                 seenNumber(storyIdList!![counter])
             }
 
             override fun onNext() {
                 Picasso.get().load(imageList!![++counter]).into(image_story)
+                description_story_activity?.text = descList!![counter]
                 addViewToStory(storyIdList!![counter])
                 seenNumber(storyIdList!![counter])
             }
         })
     }
 
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
     override fun onResume() {
         super.onResume()
         storyProgressView!!.resume()
+
+
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
         storyProgressView!!.destroy()
+
     }
 
     override fun onPause() {
         super.onPause()
         storyProgressView!!.pause()
+
     }
+
+
+
 }

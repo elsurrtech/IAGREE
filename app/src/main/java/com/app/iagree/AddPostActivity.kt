@@ -21,6 +21,7 @@ import com.google.firebase.storage.UploadTask
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
+import java.text.DateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -30,7 +31,7 @@ class AddPostActivity : AppCompatActivity() {
     private var imageUri: Uri? = null
     private var storagePostPicRef: StorageReference? = null
 
-    private var postCategory = ""
+    private var postCategory = "Post"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,22 +44,15 @@ class AddPostActivity : AppCompatActivity() {
         }
 
         CropImage.activity()
-            .setAspectRatio(1,1)
             .start(this)
 
         image_add_post_activity.setOnClickListener {
             CropImage.activity()
-                .setAspectRatio(1,1)
                 .start(this)
         }
         btnBack.setOnClickListener {
             onBackPressed()
         }
-        // ye thoda sa staring m personal vala tune true kiya hua ha lekin vo phir bhi category mangta tha isliye ye niche vala kiya
-             postCategory="Personal"
-    }
-
-    private fun uploadImage(){
 
         val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
         radioGroup.setOnCheckedChangeListener{group, checkedId ->
@@ -77,8 +71,12 @@ class AddPostActivity : AppCompatActivity() {
 
         }
 
+
+    }
+
+    private fun uploadImage(){
+
         when{
-            postCategory == "" -> Toast.makeText(this,"Choose Category",Toast.LENGTH_SHORT).show()
             editText_add_post_activity.text.toString() == "" -> Toast.makeText(this,"Enter Bio Details", Toast.LENGTH_SHORT).show()
             imageUri == null -> Toast.makeText(this,"Please Select Image", Toast.LENGTH_SHORT).show()
 
@@ -87,6 +85,7 @@ class AddPostActivity : AppCompatActivity() {
                 val progressDialog = ProgressDialog(this)
                 progressDialog.setTitle("Sharing New Post")
                 progressDialog.setMessage("Please Wait...")
+                progressDialog.setCancelable(false)
                 progressDialog.show()
 
                 val fileRef = storagePostPicRef!!.child(System.currentTimeMillis().toString()+".jpg")
@@ -112,8 +111,12 @@ class AddPostActivity : AppCompatActivity() {
                         val ref = FirebaseDatabase.getInstance().reference.child("Posts")
                         val postID = ref.push().key
 
+                        val calender = Calendar.getInstance()
+                        val currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calender.time)
+
                         val postMap = HashMap<String, Any>()
                         postMap["postID"] = postID!!
+                        postMap["date"] = currentDate.toString()
                         postMap["description"] = editText_add_post_activity.text.toString()
                         postMap["publisher"] = FirebaseAuth.getInstance().currentUser!!.uid
                         postMap["postImage"] = myUrl
@@ -124,7 +127,6 @@ class AddPostActivity : AppCompatActivity() {
                         Toast.makeText(this,"Post Shared",Toast.LENGTH_LONG).show()
 
                         val i  = Intent(this,MainActivity::class.java)
-                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(i)
                         finish()
                         progressDialog.dismiss()
@@ -150,4 +152,11 @@ class AddPostActivity : AppCompatActivity() {
             onBackPressed()
         }
     }
+
+    private fun online(){
+        val ref = FirebaseDatabase.getInstance().reference.child("OnlineUsers")
+        ref.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue("true")
+    }
+
+
 }

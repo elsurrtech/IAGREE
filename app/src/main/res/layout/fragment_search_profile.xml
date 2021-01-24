@@ -56,7 +56,7 @@
                                 android:layout_height="wrap_content"/>
                             <TextView
                                 android:id="@+id/username_search_profile_frag"
-                                android:text="username"
+                                android:text=""
                                 android:textStyle="bold"
                                 android:textSize="18sp"
                                 android:layout_marginStart="2dp"
@@ -64,6 +64,14 @@
                                 android:textColor="@color/white"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
+
+                            <ImageView
+                                android:id="@+id/image_verified_search_profile"
+                                android:src="@drawable/ic_verified"
+                                android:layout_width="15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="2dp"
+                                android:layout_height="15dp"/>
 
                         </LinearLayout>
 
@@ -81,7 +89,7 @@
 
                             <TextView
                                 android:id="@+id/fullName_search_profile_frag"
-                                android:text="Deepesh Sengar"
+                                android:text=""
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
                                 android:textColor="@color/white"
@@ -94,18 +102,24 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp">
+                            android:layout_height="wrap_content">
 
                             <ImageView
+                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="8dp"
-                                android:layout_gravity="center_vertical"
+                                android:layout_gravity="top"
                                 android:src="@drawable/ic_library_books_black_24dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
-                            <TextView
+                            <com.borjabravo.readmoretextview.ReadMoreTextView
                                 android:id="@+id/bio_search_profile_frag"
                                 android:text="bio"
+                                app:trimCollapsedText="show less"
+                                app:trimExpandedText="show more"
+                                app:trimLength="50"
+                                app:trimMode="trimModeLength"
+                                app:colorClickableText="#9c9c9c"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
                                 android:textColor="@color/white"
@@ -239,12 +253,30 @@
                         </RelativeLayout>
 
 
-                        <Button
-                            android:id="@+id/follow_unFollow_search_profile_frag"
-                            android:text="Follow"
-                            android:layout_margin="20dp"
+                        <RelativeLayout
+                            android:layout_margin="10dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content">
+
+                            <Button
+                                android:id="@+id/follow_unFollow_search_profile_frag"
+                                android:text="Follow"
+                                android:layout_centerVertical="true"
+                                android:layout_width="match_parent"
+                                android:layout_marginEnd="10dp"
+                                android:layout_toStartOf="@+id/btnConfession"
+                                android:layout_height="wrap_content"/>
+
+                            <ImageView
+                                android:visibility="gone"
+                                android:id="@+id/btnConfession"
+                                android:src="@drawable/ic_confession"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"/>
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>

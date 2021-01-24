@@ -1,24 +1,41 @@
 package com.app.iagree.loginsignup
 
-import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.DisplayMetrics
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.Toast
-import com.app.iagree.MainActivity
-import com.app.iagree.R
+import androidx.appcompat.app.AppCompatActivity
+import com.app.iagree.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_login.*
+import java.util.*
+
 
 class LoginActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (SaveLanguage(this).loadLanguage() == "english"){
+
+            setApplicationLocale("en")
+
+        }else if (SaveLanguage(this).loadLanguage() == "russian"){
+
+            setApplicationLocale("ru")
+
+        }else if (SaveLanguage(this).loadLanguage() == "latvian")
+            setApplicationLocale("lv")
         setContentView(R.layout.activity_login)
 
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
@@ -31,16 +48,22 @@ class LoginActivity : AppCompatActivity() {
             loginUser()
         }
 
+        forgotPassword.setOnClickListener {
+            startActivity(Intent(this,ForgotPassword::class.java))
+        }
+
 
     }
 
     override fun onStart() {
         super.onStart()
+        if (FirebaseAuth.getInstance().currentUser!=null ) {
+            if (FirebaseAuth.getInstance().currentUser!!.isEmailVerified){
+                val i = Intent(this, MainActivity::class.java)
+                startActivity(i)
+                finish()
+            }
 
-        if (FirebaseAuth.getInstance().currentUser!=null){
-            val i = Intent(this,MainActivity::class.java)
-            startActivity(i)
-            finish()
         }
     }
 
@@ -65,10 +88,17 @@ class LoginActivity : AppCompatActivity() {
                     if(task.isSuccessful){
                         progress.dismiss()
 
-                        val i = Intent(this,MainActivity::class.java)
-                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(i)
-                        finish()
+                        if (mAuth.currentUser!!.isEmailVerified){
+                           val x = SaveLanguage(this).loadCollege()
+                                val i = Intent(this,MainActivity::class.java)
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(i)
+                                finish()
+                        }else{
+                            Toast.makeText(this,"Verify Email",Toast.LENGTH_SHORT).show()
+                        }
+
+
                     }else{
                         val m =task.exception.toString()
                         Toast.makeText(this,"Error: $m",Toast.LENGTH_SHORT).show()
@@ -82,4 +112,21 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        finishAffinity()
+    }
+
+    private fun setApplicationLocale(locale: String) {
+        val resources: Resources = resources
+        val dm: DisplayMetrics = resources.getDisplayMetrics()
+        val config: Configuration = resources.getConfiguration()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            config.setLocale(Locale(locale.toLowerCase()))
+        } else {
+            config.locale = Locale(locale.toLowerCase())
+        }
+        resources.updateConfiguration(config, dm)
+    }
+
 }

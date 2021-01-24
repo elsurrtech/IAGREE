@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_memes.*
 
 class InfoFragment : Fragment() {
 
+
     private var postAdaptor: PostAdaptor? = null
     private var postList: MutableList<Post>? = null
     private var followingList: MutableList<String>? = null
